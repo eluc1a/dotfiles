@@ -40,27 +40,27 @@ fi
 
 # --- Source Modular Config Files ---
 # Load environment variables first as other configs may depend on them
-# source ~/.config/zsh/common/env.zsh  # Shared environment variables
-# source ~/.config/zsh/common/aliases.zsh
-# source ~/.config/zsh/common/functions.zsh
-# source ~/.config/zsh/common/completions.zsh
+source ~/.config/zsh/common/env.zsh  # Shared environment variables
+source ~/.config/zsh/common/aliases.zsh
+source ~/.config/zsh/common/functions.zsh
+source ~/.config/zsh/common/completions.zsh
 
-# if [[ "$(uname)" == "Darwin" ]]; then
-#     source ~/.config/zsh/mac/env.zsh
-#     source ~/.config/zsh/mac/aliases.zsh
-#     source ~/.config/zsh/mac/functions.zsh
-#     source ~/.config/zsh/mac/completions.zsh
-# elif [[ "$(uname)" == "Linux" ]]; then
-#     source ~/.config/zsh/linux/env.zsh
-#     source ~/.config/zsh/linux/aliases.zsh
-#     source ~/.config/zsh/linux/functions.zsh
-#     source ~/.config/zsh/linux/completions.zsh
-# fi
+if [[ "$(uname)" == "Darwin" ]]; then
+    source ~/.config/zsh/mac/env.zsh
+    source ~/.config/zsh/mac/aliases.zsh
+    source ~/.config/zsh/mac/functions.zsh
+    source ~/.config/zsh/mac/completions.zsh
+elif [[ "$(uname)" == "Linux" ]]; then
+    source ~/.config/zsh/linux/env.zsh
+    source ~/.config/zsh/linux/aliases.zsh
+    source ~/.config/zsh/linux/functions.zsh
+    source ~/.config/zsh/linux/completions.zsh
+fi
 
-source ~/.config/zsh/env.zsh
-source ~/.config/zsh/aliases.zsh
-source ~/.config/zsh/functions.zsh
-source ~/.config/zsh/completions.zsh
+# source ~/.config/zsh/env.zsh
+# source ~/.config/zsh/aliases.zsh
+# source ~/.config/zsh/functions.zsh
+# source ~/.config/zsh/completions.zsh
 
 # --- Additional Plugin Sources ---
 # Source zsh-syntax-highlighting if it exists
