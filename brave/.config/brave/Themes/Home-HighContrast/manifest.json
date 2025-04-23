@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "Home High‑Contrast Active‑Tab",
+    "version": "1.0",
+    "theme": {
+      "colors": {
+        "frame":               [57, 47, 68],
+        "toolbar":             [80, 60, 98],
+        "tab_background_text": [255, 206, 255],
+        "background_tab":      [32, 24, 47],
+        "active_tab":          [80, 60, 98],
+        "tab_text":            [255, 255, 255],
+        "bookmark_text":       [255, 255, 255]
+      },
+      "properties": {
+        "ntp_background_alignment": "bottom"
+      }
+    }
+  }

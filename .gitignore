@@ -1,0 +1,10 @@
+
+# nested repos we dont track
+packages/
+adopt_remaining.sh
+**/env.zsh
+**/github-personal.sh
+**/github-work.sh
+**/AppSupport/*
+**/private/*
+**/sockets/*

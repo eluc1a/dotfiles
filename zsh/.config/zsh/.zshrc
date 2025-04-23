@@ -1,0 +1,80 @@
+# ~/.zshrc
+# --------
+# Main ZSH configuration file
+
+# --- Powerlevel10k Instant Prompt ---
+# Enable Powerlevel10k instant prompt. Should stay at the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+
+# --- Oh-My-Zsh Configuration ---
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Oh-My-Zsh plugins
+plugins=(
+  git                      # Git integration and aliases
+  zsh-autosuggestions      # Fish-like autosuggestions
+  git-extras               # Extra git commands
+  zsh-syntax-highlighting  # Command syntax highlighting
+  aliases                  # Alias Management
+  alias-finder             # Find and manage aliases
+  copyfile                 # Copy files to clipboard using copyfile <copy>
+  copypath                 # Copy file paths to clipboard using copypath <copy>
+  gcloud                   # Google Cloud SDK autocompletion
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# --- SSH Agent Setup ---
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval $(ssh-agent -s)
+    ssh-add ~/.ssh/id_rsa
+fi
+
+# --- Source Modular Config Files ---
+# Load environment variables first as other configs may depend on them
+# source ~/.config/zsh/common/env.zsh  # Shared environment variables
+# source ~/.config/zsh/common/aliases.zsh
+# source ~/.config/zsh/common/functions.zsh
+# source ~/.config/zsh/common/completions.zsh
+
+# if [[ "$(uname)" == "Darwin" ]]; then
+#     source ~/.config/zsh/mac/env.zsh
+#     source ~/.config/zsh/mac/aliases.zsh
+#     source ~/.config/zsh/mac/functions.zsh
+#     source ~/.config/zsh/mac/completions.zsh
+# elif [[ "$(uname)" == "Linux" ]]; then
+#     source ~/.config/zsh/linux/env.zsh
+#     source ~/.config/zsh/linux/aliases.zsh
+#     source ~/.config/zsh/linux/functions.zsh
+#     source ~/.config/zsh/linux/completions.zsh
+# fi
+
+source ~/.config/zsh/env.zsh
+source ~/.config/zsh/aliases.zsh
+source ~/.config/zsh/functions.zsh
+source ~/.config/zsh/completions.zsh
+
+# --- Additional Plugin Sources ---
+# Source zsh-syntax-highlighting if it exists
+# Note: Normally this is handled by the Oh-My-Zsh plugin, but keeping as backup
+if [ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+    source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+# --- Powerlevel10k Configuration ---
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Added by Windsurf
+export PATH="/Users/ilyakhruschev/.codeium/windsurf/bin:$PATH"
+unset LS_COLORS
+unset EZA_COLORS

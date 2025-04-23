@@ -1,0 +1,501 @@
+#!/usr/bin/env bash
+
+# Cheatsheet Script - Access common commands and personal aliases/functions
+
+# --- Color Definitions ---
+BOLD=$(tput bold)
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
+RESET=$(tput sgr0)
+
+# --- Function to display defined colors and their hex codes ---
+colors() {
+  echo -e "${BLUE}██████${RESET} AT Blue    — #012169"
+  echo -e "${GREEN}██████${RESET} AT Green   — #78be20"
+  echo -e "${WHITE}██████${RESET} AT Grey    — #595959"
+  echo -e "${CYAN}██████${RESET} Aqua       — #00FFFF"
+  echo -e "${MAGENTA}██████${RESET} Pink       — #FFC0CB"
+  echo -e "${MAGENTA}██████${RESET} Purple     — #800080"
+  echo -e "${YELLOW}██████${RESET} Orange     — #FFA500"
+  echo -e "${RED}██████${RESET} Red        — #FF0000"
+  echo -e "${GREEN}██████${RESET} Green      — #008000"
+  echo -e "${YELLOW}██████${RESET} Yellow     — #FFFF00"
+  echo -e "${CYAN}██████${RESET} Cyan       — #00FFFF"
+  echo -e "${WHITE}██████${RESET} White      — #FFFFFF"
+  echo -e "${RED}██████${RESET} Black      — #000000"
+  echo -e "${BOLD}Usage:${RESET}  cheatsheet colors"
+}
+
+# --- Example Usage ---
+# echo "${BOLD}${YELLOW}--- Category ---${RESET}"
+# echo "${CYAN}command${RESET} - description"
+
+# --- Function to display help and available topics ---
+display_help() {
+  echo -e "${BOLD}Usage:${RESET} cheatsheet [topic]"
+  echo ""
+  echo -e "${BOLD}Available topics:${RESET}"
+  echo -e "  ${CYAN}colors${RESET}     - Display defined colors and their hex codes"
+  echo -e "  ${CYAN}nav${RESET}        - Directory navigation and shortcuts"
+  echo -e "  ${CYAN}files${RESET}      - File listing, management, viewing, creation"
+  echo -e "  ${CYAN}search${RESET}     - Searching files and content (fzf, rg, grep, find)"
+  echo -e "  ${CYAN}tmux${RESET}       - Tmux (terminal multiplexer) commands"
+  echo -e "  ${CYAN}git${RESET}        - Git commands and aliases"
+  echo -e "  ${CYAN}docker${RESET}     - Docker and Docker Compose commands"
+  echo -e "  ${CYAN}gcloud${RESET}     - Google Cloud SDK commands (esp. GCS)"
+  echo -e "  ${CYAN}system${RESET}     - System information, processes, updates (Mac & Linux)"
+  echo -e "  ${CYAN}network${RESET}    - Network utilities and aliases"
+  echo -e "  ${CYAN}dev${RESET}        - Development tools (npm, python, etc.)"
+  echo -e "  ${CYAN}archive${RESET}    - Archive management (tar)"
+  echo -e "  ${CYAN}custom${RESET}     - Your custom scripts, functions, and specific aliases"
+  echo -e "  ${CYAN}aliases${RESET}    - Summary list of your main aliases"
+  echo -e "  ${CYAN}functions${RESET}  - Summary list of your main functions"
+  echo -e "  ${CYAN}tips${RESET}       - General terminal tips"
+  echo ""
+  echo "If no topic is provided, this help message is shown."
+}
+
+# --- Main logic ---
+if [ $# -eq 0 ]; then
+  display_help
+  exit 0
+fi
+
+topic=$1
+
+case $topic in
+  colors)
+    colors
+    ;;
+
+  nav|navigation)
+    cat <<EOF
+${BOLD}${YELLOW}--- Navigation ---${RESET}
+${CYAN}cd <dir>${RESET}       - Change directory
+${CYAN}cd -${RESET}           - Go back to the previous directory (alias: ${CYAN}back${RESET})
+${CYAN}pwd${RESET}            - Print working directory name
+${CYAN}pushd <dir>${RESET}    - Push directory onto stack and cd
+${CYAN}popd${RESET}           - Pop directory from stack and cd
+${CYAN}dirs -v${RESET}        - List directory stack
+
+# Your Aliases / Functions
+${CYAN}back${RESET}           - Go back to previous directory (cd -)
+${CYAN}...${RESET}            - Go up 2 directories (../..)
+${CYAN}....${RESET}           - Go up 3 directories (../../..)
+${CYAN}.....${RESET}          - Go up 4 directories (../../../..)
+${CYAN}......${RESET}         - Go up 5 directories (../../../../..)
+${CYAN}[0-9]${RESET}          - Go back N directories in history (e.g., ${CYAN}4${RESET} -> cd -4)
+${CYAN}0, 00, 1, 2, 9, 99${RESET} - Direct cd to specific project/common dirs
+${CYAN}KK${RESET}             - cd to Komplete Kontrol App Contents
+${CYAN}musicd/musicp${RESET}  - cd to specific music project dirs
+${CYAN}fcd${RESET} (function) - Fuzzy find directory (using fd + fzf) and cd into it
+EOF
+    ;;
+
+  files|file)
+    cat <<EOF
+${BOLD}${YELLOW}--- File Listing, Management, Viewing, Creation ---${RESET}
+# Listing (using eza - install if needed)
+${CYAN}ls${RESET}             - List files detailed (eza -l --icons --git)
+${CYAN}la${RESET}             - List all files including hidden (eza -la --icons --git)
+${CYAN}lt${RESET}             - Tree view (eza -T --icons --git-ignore)
+${CYAN}lta${RESET}            - Tree view including hidden (eza -Ta --icons --git-ignore)
+
+# Standard ls (if eza not available)
+${CYAN}ls -l${RESET}          - Long list format
+${CYAN}ls -a${RESET}          - List hidden files
+${CYAN}ls -h${RESET}          - Human-readable sizes
+
+# Management
+${CYAN}mkdir <dir>${RESET}    - Create directory (alias includes -p: create parent dirs as needed)
+${CYAN}cp <src> <dst>${RESET} - Copy files/directories (-r for recursive)
+${CYAN}mv <src> <dst>${RESET} - Move/rename files/directories
+${CYAN}rm <file>${RESET}      - Remove file (Be careful! Consider ${CYAN}trash${RESET} alias if configured)
+${CYAN}rmdir <dir>${RESET}    - Remove empty directory (alias: ${CYAN}rd${RESET})
+${CYAN}touch <file>${RESET}   - Create empty file or update timestamp
+${CYAN}chmod <mode> <f>${RESET} - Change file permissions (e.g., chmod +x script.sh)
+${CYAN}chown <u:g> <f>${RESET} - Change file owner/group
+
+# Viewing/Editing
+${CYAN}cat <file>${RESET}     - View file contents (alias uses viewfile -> bat/glow)
+${CYAN}bat <file>${RESET}     - View file with syntax highlighting (if installed)
+${CYAN}viewfile${RESET}       - View file (glow for .md, bat otherwise)
+${CYAN}less <file>${RESET}    - View large files interactively (q to quit)
+${CYAN}head <file>${RESET}    - Show first 10 lines
+${CYAN}tail <file>${RESET}    - Show last 10 lines (-f to follow changes)
+${CYAN}vim/nvim <file>${RESET}- Edit file in Vim/Neovim (alias: ${CYAN}vim='nvim'${RESET})
+${CYAN}code <file/dir>${RESET}- Open file/directory in VS Code (alias)
+EOF
+    ;;
+
+  search)
+    cat <<EOF
+${BOLD}${YELLOW}--- Searching Files and Content ---${RESET}
+# Ripgrep (rg - install if needed)
+${CYAN}rg <pattern> [path]${RESET}   - Search for pattern recursively (alias: smart-case)
+${CYAN}rgf <pattern> [path]${RESET}  - Show only filenames containing the pattern
+${CYAN}rgc <pattern> [path]${RESET}  - Show count of matches per file
+${CYAN}rgp${RESET}                 - Interactive ripgrep search with fzf preview (using bat)
+
+# Find
+${CYAN}find <path> -name "<pattern>"${RESET}   - Search for files by name
+${CYAN}find <path> -type <d|f>${RESET}         - Search for directories (d) or files (f)
+${CYAN}find . -exec <cmd> {} \\;${RESET}      - Execute command on found files
+
+# Grep
+${CYAN}grep <pattern> <file>${RESET}           - Search for pattern in a file
+${CYAN}grep -r <pattern> <dir>${RESET}         - Search recursively
+${CYAN}grep -i${RESET}                        - Case-insensitive search
+${CYAN}grep -v${RESET}                        - Invert match (lines NOT containing pattern)
+${CYAN}grep -E${RESET}                        - Use extended regular expressions
+
+# FZF (install if needed)
+${CYAN}Ctrl+T${RESET}         - FZF file finder
+${CYAN}Ctrl+R${RESET}         - FZF history search
+${CYAN}ff${RESET}             - Fuzzy find file and open in \$EDITOR
+${CYAN}search_file${RESET}    - Fuzzy find file with preview
+${CYAN}search_content${RESET} - Fuzzy find file content with preview
+${CYAN}se${RESET}             - search_and_edit: Find file by content & open in \$EDITOR
+
+# Your Aliases
+${CYAN}hsi${RESET}           - Search command history (history | grep)
+${CYAN}search${RESET}        - Tree view piped to grep (tree -f | grep)
+EOF
+    ;;
+
+  git)
+    cat <<EOF
+${BOLD}${YELLOW}--- Git Commands ---${RESET}
+${CYAN}git status${RESET}                - Show working tree status
+${CYAN}git add <file>${RESET}            - Add file changes to index
+${CYAN}git add .${RESET}                 - Add all changes in current directory to index
+${CYAN}git commit -m "msg"${RESET}       - Commit staged changes with message
+${CYAN}git commit -am "msg"${RESET}      - Add all tracked changes and commit
+${CYAN}git push [rem] [br]${RESET}       - Push commits to remote
+${CYAN}git pull [rem] [br]${RESET}       - Fetch & integrate changes
+${CYAN}git fetch [remote]${RESET}        - Download objects/refs from another repo
+${CYAN}git branch${RESET}               - List branches (-a for all, -d to delete)
+${CYAN}git checkout <branch>${RESET}     - Switch branches
+${CYAN}git checkout -b <new>${RESET}     - Create & switch to new branch
+${CYAN}git merge <branch>${RESET}        - Merge specified branch into current
+${CYAN}git log${RESET}                  - Show commit log (--oneline, --graph)
+${CYAN}git diff${RESET}                 - Show changes
+${CYAN}git remote -v${RESET}            - List remote repositories
+${CYAN}git clone <url>${RESET}          - Clone a repository
+
+# Sync Local Repo with New Remote
+${CYAN}git remote add origin <URL>${RESET} - Add new remote repo URL
+${CYAN}git branch -M main${RESET}          - Rename local branch to 'main'
+${CYAN}git push -u origin main${RESET}     - Push to new remote & set upstream
+
+# Your Aliases
+${CYAN}ghw${RESET}            - Source GitHub work credentials script
+${CYAN}ghp${RESET}            - Source GitHub personal credentials script
+${CYAN}ggg${RESET}            - Echo global git user.name & user.email
+EOF
+    ;;
+
+  system|sys)
+    cat <<EOF
+${BOLD}${YELLOW}--- System Info, Processes, Updates ---${RESET}
+# Processes
+${CYAN}ps aux${RESET}           - Show all running processes
+${CYAN}ps -ef${RESET}           - Show all running processes (alt format)
+${CYAN}top${RESET}              - Real-time system view
+${CYAN}htop${RESET}             - Interactive process viewer
+${CYAN}kill <pid>${RESET}       - Terminate a process by PID
+${CYAN}killall <name>${RESET}   - Terminate processes by name
+${CYAN}pkill <pattern>${RESET}  - Signal processes by name/attributes
+${CYAN}pgrep <pattern>${RESET}  - List PIDs matching pattern
+
+# System Info
+${CYAN}uname -a${RESET}         - Print system information
+${CYAN}df -h${RESET}            - Show disk space usage
+${CYAN}du -sh <path>${RESET}    - Show total size of path (human-readable)
+${CYAN}free -h${RESET}          - Show memory usage (Linux)
+${CYAN}sysctl -n hw.ncpu${RESET}# Mac: get CPU core count
+${CYAN}lscpu${RESET}            - Linux: get CPU info
+${CYAN}temp${RESET}             - Show CPU temperature (alias for osx-cpu-temp)
+
+# History & Corrections
+${CYAN}history${RESET}          - Show command history
+${CYAN}history-stats${RESET}    - Show top used commands
+${CYAN}hsi${RESET}              - Search command history (history | grep)
+${CYAN}Ctrl+R${RESET}           - Reverse search history
+${CYAN}!!${RESET}               - Repeat last command
+${CYAN}!<string>${RESET}        - Execute last command starting with <string>
+${CYAN}!<n>${RESET}             - Execute the Nth command from history
+${CYAN}!-<n>${RESET}            - Execute command N steps back
+${CYAN}fuck${RESET}             - Correct previous console command (requires 'thefuck')
+
+# Updates (Mac - Homebrew)
+${CYAN}update-mac${RESET}       - brew update && brew upgrade
+${CYAN}bubu${RESET}             - brew update, upgrade, cleanup
+${CYAN}bubu-all${RESET}         - bubu + brew doctor
+${CYAN}bubu-cask${RESET}        - bubu for casks
+${CYAN}bubu-cask-all${RESET}    - bubu-cask + brew doctor
+${CYAN}restart <svc>${RESET}    - Restart brew service
+
+# Updates (Debian/Ubuntu)
+${CYAN}update-debian${RESET}    - apt update, upgrade, dist-upgrade
+${CYAN}logs${RESET}             - Tail systemd journal logs (journalctl -fu)
+${CYAN}logs-all${RESET}         - Show all logs for a systemd unit (journalctl -u)
+
+# Other
+${CYAN}lock${RESET}             - Lock Mac screen
+${CYAN}run-help${RESET}         - Alias for 'man'
+${CYAN}which-command${RESET}    - Alias for 'whence'
+EOF
+    ;;
+
+  network|net)
+    cat <<EOF
+${BOLD}${YELLOW}--- Network Utilities ---${RESET}
+${CYAN}ping <host>${RESET}      - Test network connectivity
+${CYAN}ifconfig${RESET}         - Show network config (Mac/older Linux)
+${CYAN}ip addr${RESET}          - Show network config (Linux)
+${CYAN}netstat -tulnp${RESET}   - Show listening ports
+${CYAN}lsof -i -P -n${RESET}     - List open files/sockets
+${CYAN}curl <url>${RESET}       - Transfer data from/to a server
+${CYAN}wget <url>${RESET}       - Download files from the web
+${CYAN}ssh <user@host>${RESET}  - Connect to remote host via SSH
+${CYAN}scp <src> <dst>${RESET}  - Securely copy files over SSH
+
+# Your Aliases
+${CYAN}ip${RESET}               - Get primary IP address
+${CYAN}listen${RESET}           - Show listening ports/processes
+${CYAN}net${RESET}              - Quick ping google.com and show latency
+${CYAN}serve/server${RESET}     - Start simple Python HTTP server
+${CYAN}sniff${RESET}            - HTTP sniffing with ngrep
+${CYAN}tunnel${RESET}           - Establish SSH tunnel
+${CYAN}weather${RESET}          - Get weather from wttr.in
+EOF
+    ;;
+
+  dev)
+    cat <<EOF
+${BOLD}${YELLOW}--- Development Tools ---${RESET}
+# Node.js / npm
+${CYAN}node <script.js>${RESET}        - Run Node.js script
+${CYAN}npm install [pkg]${RESET}       - Install packages (alias: ${CYAN}ni${RESET})
+${CYAN}npm run <script>${RESET}        - Run package script (alias: ${CYAN}nr${RESET})
+${CYAN}npm test${RESET}                - Run tests (alias: ${CYAN}nt${RESET})
+${CYAN}npm publish${RESET}             - Publish package
+${CYAN}npx <cmd>${RESET}               - Execute package binaries
+
+# Python / Conda
+${CYAN}python <script.py>${RESET}     - Run Python script
+${CYAN}pip install <pkg>${RESET}      - Install Python packages
+
+# JSR
+${CYAN}jsr publish${RESET}            - Publish package to JSR
+
+# Other Aliases
+${CYAN}ni${RESET}, ${CYAN}nr${RESET}, ${CYAN}nrb${RESET}, ${CYAN}nrf${RESET}, ${CYAN}nt${RESET}, ${CYAN}npm-dry${RESET}, ${CYAN}remove-node-modules${RESET}
+${CYAN}jupyter${RESET}, ${CYAN}jtset${RESET}, ${CYAN}pipg${RESET}, ${CYAN}serve/server${RESET}
+${CYAN}rsync${RESET}, ${CYAN}code${RESET}, ${CYAN}vim/nvim${RESET}
+EOF
+    ;;
+
+  archive)
+    cat <<EOF
+${BOLD}${YELLOW}--- Archive Management ---${RESET}
+${CYAN}tar -czvf <archive.tar.gz> <files>${RESET}   - Create gzip archive
+${CYAN}tar -xzvf <archive.tar.gz>${RESET}         - Extract gzip archive
+${CYAN}tar -cjvf <archive.tar.bz2> <files>${RESET} - Create bzip2 archive
+${CYAN}tar -xjvf <archive.tar.bz2>${RESET}        - Extract bzip2 archive
+${CYAN}tar -cJvf <archive.tar.xz> <files>${RESET}  - Create xz archive
+${CYAN}tar -xJvf <archive.tar.xz>${RESET}         - Extract xz archive
+EOF
+    ;;
+
+  custom|scripts|misc)
+    cat <<EOF
+${BOLD}${YELLOW}--- Custom Scripts, Functions & Specific Aliases ---${RESET}
+${CYAN}cz${RESET}     - Edit ~/.zshrc with vim
+${CYAN}czz${RESET}    - Edit ~/.zshrc with VS Code
+${CYAN}sz${RESET}     - Source/reload ~/.zshrc
+
+${CYAN}ydla${RESET}   - Download YouTube audio as mp3
+${CYAN}ydr${RESET}    - Rsync YouTube downloads to Raspberry Pi
+
+${CYAN}re${RESET}     - scp torrents to \$PI and remove locally
+${CYAN}re4/re42${RESET} - scp torrents to \$PI42 and remove locally
+${CYAN}ri${RESET}     - scp FITINDEX csv to \$PI and remove locally
+${CYAN}rr${RESET}     - Remove torrents from Downloads dir locally
+
+${CYAN}11${RESET}     - Run key_script_runner.py in background
+${CYAN}killwork${RESET} - Run killwork.sh script
+${CYAN}startwork${RESET} - Run slackmail.sh script
+${CYAN}pcsv${RESET}   - Run pretty_csv.sh script
+EOF
+    ;;
+
+  aliases)
+    cat <<EOF
+${BOLD}${YELLOW}--- Aliases Summary ---${RESET}
+${CYAN}nav${RESET}, ${CYAN}files${RESET}, ${CYAN}search${RESET}, ${CYAN}tmux${RESET}, ${CYAN}git${RESET}, ${CYAN}docker${RESET}, ${CYAN}gcloud${RESET}, ${CYAN}system${RESET}, ${CYAN}network${RESET}, ${CYAN}dev${RESET},
+${CYAN}archive${RESET}, ${CYAN}custom${RESET}, ${CYAN}aliases${RESET}, ${CYAN}functions${RESET}, ${CYAN}tips${RESET}, ${CYAN}colors${RESET}
+EOF
+    ;;
+
+  functions)
+    cat <<EOF
+${BOLD}${YELLOW}--- Functions Summary ---${RESET}
+${CYAN}colors()${RESET}         - Show defined colors & hex codes
+${CYAN}display_help()${RESET}   - Show this help message
+EOF
+    ;;
+
+  tips)
+    cat <<EOF
+${BOLD}${YELLOW}--- General Terminal Tips ---${RESET}
+${CYAN}Tab${RESET}        - Autocomplete commands, filenames, paths
+${CYAN}Ctrl+C${RESET}     - Kill the current running process
+${CYAN}Ctrl+D${RESET}     - Logout (EOF)
+${CYAN}Ctrl+L${RESET}     - Clear the screen
+${CYAN}Ctrl+A${RESET}     - Move cursor to beginning of line
+${CYAN}Ctrl+E${RESET}     - Move cursor to end of line
+${CYAN}Ctrl+U${RESET}     - Cut text from cursor to beginning of line
+${CYAN}Ctrl+K${RESET}     - Cut text from cursor to end of line
+${CYAN}Ctrl+W${RESET}     - Cut word before the cursor
+${CYAN}Ctrl+Y${RESET}     - Paste text that was cut
+${CYAN}Ctrl+R${RESET}     - Reverse search command history
+${CYAN}!!${RESET}         - Execute the last command again
+${CYAN}!<string>${RESET}  - Execute last command starting with <string>
+${CYAN}!<n>${RESET}       - Execute the Nth command from history
+${CYAN}!-<n>${RESET}      - Execute command N steps back
+${CYAN}<cmd> | less${RESET}   - Pipe output to 'less'
+${CYAN}<cmd> > file${RESET}   - Redirect output to a file (overwrite)
+${CYAN}<cmd> >> file${RESET}  - Redirect output to a file (append)
+${CYAN}<cmd1> | <cmd2>${RESET} - Pipe cmd1 output as input to cmd2
+${CYAN}man <cmd>${RESET}      - Show manual page (alias: run-help)
+${CYAN}apropos <term>${RESET} - Search man pages descriptions
+${CYAN}xargs${RESET}        - Build & execute commands from input
+EOF
+    ;;
+
+  tmux)
+    cat <<EOF
+${BOLD}${YELLOW}--- Tmux (Terminal Multiplexer) ---${RESET}
+# Sessions
+${CYAN}tmux new -s <name>${RESET}        - Start a new named session
+${CYAN}tmux ls${RESET}                  - List running sessions
+${CYAN}tmux attach -t <name>${RESET}    - Attach to an existing session
+${CYAN}tmux detach${RESET}              - Detach from current session (Prefix + d)
+${CYAN}tmux kill-session -t <name>${RESET} - Kill a specific session
+${CYAN}tmux kill-server${RESET}         - Kill all sessions & server
+
+# Windows
+${CYAN}Prefix + c${RESET}               - Create a new window
+${CYAN}Prefix + w${RESET}               - List windows (interactive)
+${CYAN}Prefix + n${RESET}               - Next window
+${CYAN}Prefix + p${RESET}               - Previous window
+${CYAN}Prefix + <0-9>${RESET}           - Go to window number
+${CYAN}Prefix + ,${RESET}               - Rename current window
+${CYAN}Prefix + &${RESET}               - Kill current window
+
+# Panes
+${CYAN}Prefix + %${RESET}               - Split pane vertically
+${CYAN}Prefix + \""${RESET}             - Split pane horizontally
+${CYAN}Prefix + <arrow>${RESET}         - Navigate panes
+${CYAN}Prefix + o${RESET}               - Cycle panes
+${CYAN}Prefix + z${RESET}               - Toggle zoom for pane
+${CYAN}Prefix + x${RESET}               - Kill current pane
+${CYAN}Prefix + Space${RESET}           - Cycle pane layouts
+${CYAN}Prefix + :resize-pane -D/U/L/R [num]${RESET} - Resize pane
+${CYAN}Prefix + Hold <arrow>${RESET}     - Resize incrementally
+
+# Other
+${CYAN}Prefix + ?${RESET}               - Show key bindings
+${CYAN}Prefix + t${RESET}               - Show clock
+${CYAN}Prefix + :${RESET}               - Enter command mode
+
+# Default Prefix: Ctrl+b
+EOF
+    ;;
+
+  docker)
+    cat <<EOF
+${BOLD}${YELLOW}--- Docker & Docker Compose ---${RESET}
+# Docker Core
+${CYAN}docker build -t <tag> .${RESET}             - Build an image
+${CYAN}docker run [opts] <image> [cmd]${RESET}      - Run a container
+${CYAN}docker ps${RESET}                           - List running containers
+${CYAN}docker images${RESET}                       - List images
+${CYAN}docker stop <id/name>${RESET}               - Stop a container
+${CYAN}docker start <id/name>${RESET}              - Start a container
+${CYAN}docker restart <id/name>${RESET}            - Restart a container
+${CYAN}docker rm <id/name>${RESET}                 - Remove a container
+${CYAN}docker rmi <image>${RESET}                  - Remove an image
+${CYAN}docker logs <id/name>${RESET}               - Fetch container logs
+${CYAN}docker exec -it <id/name> <cmd>${RESET}     - Exec into a running container
+${CYAN}docker volume ls${RESET}                    - List volumes
+${CYAN}docker network ls${RESET}                   - List networks
+${CYAN}docker system prune${RESET}                 - Cleanup unused data
+
+# Docker Compose
+${CYAN}docker-compose up${RESET}                   - Start services
+${CYAN}docker-compose up -d${RESET}                - Start in detached mode
+${CYAN}docker-compose down${RESET}                 - Stop & remove services
+${CYAN}docker-compose build${RESET}                - Build services
+${CYAN}docker-compose ps${RESET}                   - List compose containers
+${CYAN}docker-compose logs${RESET}                 - View logs
+${CYAN}docker-compose exec <svc> <cmd>${RESET}     - Exec in a service container
+${CYAN}docker-compose pull${RESET}                 - Pull service images
+${CYAN}docker-compose push${RESET}                 - Push service images
+${CYAN}docker-compose config${RESET}               - Validate compose file
+${CYAN}docker-compose restart${RESET}              - Restart services
+${CYAN}docker-compose stop${RESET}                 - Stop services
+${CYAN}docker-compose start${RESET}                - Start services
+EOF
+    ;;
+
+  gcloud)
+    cat <<EOF
+${BOLD}${YELLOW}--- Google Cloud SDK (gcloud) ---${RESET}
+# Init & Config
+${CYAN}gcloud init${RESET}                            - Initialize & configure gcloud
+${CYAN}gcloud config list${RESET}                     - List current config
+${CYAN}gcloud config set project <project_id>${RESET} - Set default project
+${CYAN}gcloud config set compute/zone <zone>${RESET}  - Set default compute zone
+${CYAN}gcloud config set compute/region <reg>${RESET} - Set default compute region
+${CYAN}gcloud components update${RESET}               - Update gcloud components
+
+# Cloud Storage
+${CYAN}gcloud storage ls gs://<bucket>/[path]${RESET}                - List buckets/objects
+${CYAN}gcloud storage cp <src> gs://<bucket>/[dest]${RESET}         - Upload to GCS
+${CYAN}gcloud storage cp gs://<bucket>/<obj> <dest>${RESET}         - Download from GCS
+${CYAN}gcloud storage mv <src> <dest>${RESET}                       - Move/Rename objects
+${CYAN}gcloud storage rm gs://<bucket>/<obj>${RESET}               - Delete object
+${CYAN}gcloud storage cat gs://<bucket>/<obj>${RESET}              - View object content
+${CYAN}gcloud storage du -sh gs://<bucket>/[path]${RESET}          - Show bucket usage
+${CYAN}gcloud storage buckets create gs://<bucket>${RESET}         - Create bucket
+${CYAN}gcloud storage buckets delete gs://<bucket>${RESET}         - Delete bucket
+${CYAN}gcloud storage set-cors <cfg.json> gs://<bucket>${RESET}    - Set CORS config
+${CYAN}gcloud storage sign-url --duration=<time> <key> gs://<bucket>/<obj>${RESET} - Generate signed URL
+
+# Other Services
+${CYAN}gcloud compute instances list${RESET}           - List Compute VMs
+${CYAN}gcloud compute ssh <name> --zone=<zone>${RESET} - SSH into VM
+${CYAN}gcloud sql instances list${RESET}              - List Cloud SQL instances
+${CYAN}gcloud functions list${RESET}                  - List Cloud Functions
+${CYAN}gcloud run services list${RESET}               - List Cloud Run services
+${CYAN}gcloud logging read <filter>${RESET}            - Read logs
+EOF
+    ;;
+
+  *)
+    echo -e "${RED}Error:${RESET} Unknown topic '$topic'"
+    echo ""
+    display_help
+    exit 1
+    ;;
+esac
+
+exit 0
