@@ -32,24 +32,28 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# --- SSH Agent Setup ---
-# Start agent if SSH_AUTH_SOCK is unset or points at a dead socket
-if [ -z "$SSH_AUTH_SOCK" ] || [ ! -S "$SSH_AUTH_SOCK" ]; then
-  eval "$(ssh-agent -s)"
+# --- SSH Agent Setup (quiet & cross-platform) -----------------------------
+if [[ -z $SSH_AUTH_SOCK || ! -S $SSH_AUTH_SOCK ]]; then
+  # Start the agent, but filter out the noisy "echo Agent pid NNN" line.
+  eval "$(ssh-agent -s 2>/dev/null | grep -v '^echo')"
 fi
 
-# List of keys to load
 SSH_KEYS=(
   ~/.ssh/mac_personal_github
   ~/.ssh/adtalem_github
   ~/.ssh/id_rsa
 )
 
-# Add each key (Use -K on macOS to store passphrase in Keychain)
 for key in "${SSH_KEYS[@]}"; do
-  [ -f "$key" ] || continue
-  ssh-add -K "$key" >/dev/null 2>&1
+  [[ -f $key ]] || continue
+  if [[ $(uname) == Darwin ]]; then
+    ssh-add -K "$key"   >/dev/null 2>&1   # store passphrase in macOS Keychain
+  else
+    ssh-add    "$key"   >/dev/null 2>&1   # normal add, no FIDO prompt
+  fi
 done
+
+
 
 # --- Source Modular Config Files ---
 # Load environment variables first as other configs may depend on them
