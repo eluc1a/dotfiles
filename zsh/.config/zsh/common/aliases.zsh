@@ -69,6 +69,7 @@ alias vim='nvim'
 alias jupyter='~/miniconda3/bin/jupyter'
 alias jtset='jt -t monokai -cellw 88% -altmd -T -N -kl -fs 120 -tfs 130 -tf merriserif'
 alias jsr-dry='jsr publish --dry-run'
+alias mcp-server="nohup sh -c 'PORT=2190 npx @typingmind/mcp CZ8s4B5cOED0E60-PueCh' > ~/mcp.log 2>&1 &"
 
 # NPM helpers
 alias ni='npm install'
