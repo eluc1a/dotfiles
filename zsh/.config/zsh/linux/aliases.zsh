@@ -1,0 +1,6 @@
+alias 0='~/.config'
+alias 00='~/dev'
+alias 1='cd /mnt/storage1/Movies'
+alias 2='cd /mnt/storage1/'
+alias 3='cd /mnt/storage1/TV_shows'
+alias 4='cd /mnt/storage1/tmp_extractions'
