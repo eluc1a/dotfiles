@@ -47,6 +47,7 @@ alias ggg='echo "Username: $(git config --global user.name)" && echo "Email: $(g
 # alias ls='eza'
 alias ls='eza -l --icons --git'
 alias lss='eza -la --icons --git | grep "^l"' # list symlinks and directories
+alias lsy='eza -la --icons --git --link-targets | grep "^l"'
 alias la='eza -la --icons --git'
 alias lt='eza -T --icons --git-ignore'  # Tree view
 alias lta='eza -Ta --icons --git-ignore'  # Tree view with hidden files

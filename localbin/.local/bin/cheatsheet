@@ -50,6 +50,7 @@ display_help() {
   echo -e "  ${CYAN}gcloud${RESET}     - Google Cloud SDK commands (esp. GCS)"
   echo -e "  ${CYAN}system${RESET}     - System information, processes, updates (Mac & Linux)"
   echo -e "  ${CYAN}network${RESET}    - Network utilities and aliases"
+  echo -e "  ${CYAN}ssh${RESET}        - SSH related commands and key management"
   echo -e "  ${CYAN}dev${RESET}        - Development tools (npm, python, etc.)"
   echo -e "  ${CYAN}archive${RESET}    - Archive management (tar)"
   echo -e "  ${CYAN}custom${RESET}     - Your custom scripts, functions, and specific aliases"
@@ -105,11 +106,23 @@ ${CYAN}ls${RESET}             - List files detailed (eza -l --icons --git)
 ${CYAN}la${RESET}             - List all files including hidden (eza -la --icons --git)
 ${CYAN}lt${RESET}             - Tree view (eza -T --icons --git-ignore)
 ${CYAN}lta${RESET}            - Tree view including hidden (eza -Ta --icons --git-ignore)
+${CYAN}lss${RESET}            - List only symlinks and directories (eza -la --icons --git | grep "^l")
+${CYAN}lsh${RESET}            - List only hidden files (ls -d .[^.]*)
+${CYAN}lg${RESET}             - List files and grep (ls -lh | grep)
 
 # Standard ls (if eza not available)
 ${CYAN}ls -l${RESET}          - Long list format
 ${CYAN}ls -a${RESET}          - List hidden files
 ${CYAN}ls -h${RESET}          - Human-readable sizes
+
+# Symlinks
+${CYAN}ln -s <target> <linkname>${RESET} - Create symbolic link to target
+${CYAN}ln -sf <target> <linkname>${RESET} - Create/overwrite symbolic link
+${CYAN}readlink <link>${RESET}  - Display target the symlink points to
+${CYAN}readlink -f <link>${RESET} - Display canonical path of symlink target
+${CYAN}unlink <link>${RESET}    - Remove a symbolic link
+${CYAN}find . -type l${RESET}   - Find all symbolic links in current directory
+${CYAN}find . -type l -ls${RESET} - Find and display all symbolic links with details
 
 # Management
 ${CYAN}mkdir <dir>${RESET}    - Create directory (alias includes -p: create parent dirs as needed)
@@ -277,6 +290,51 @@ ${CYAN}weather${RESET}          - Get weather from wttr.in
 EOF
     ;;
 
+  ssh)
+    cat <<EOF
+${BOLD}${YELLOW}--- SSH Commands & Key Management ---${RESET}
+# Basic SSH
+${CYAN}ssh user@hostname${RESET}          - Connect to remote host
+${CYAN}ssh -p 2222 user@hostname${RESET}  - Connect on specific port
+${CYAN}ssh -i ~/.ssh/key user@host${RESET} - Connect using specific identity file
+
+# Key Generation
+${CYAN}ssh-keygen${RESET}                 - Generate SSH key pair (default: RSA, id_rsa)
+${CYAN}ssh-keygen -t ed25519${RESET}      - Generate Ed25519 key (modern, recommended)
+${CYAN}ssh-keygen -t rsa -b 4096${RESET}  - Generate 4096-bit RSA key
+${CYAN}ssh-keygen -f ~/.ssh/key_name${RESET} - Generate key with custom name/location
+${CYAN}ssh-keygen -C "comment"${RESET}    - Add comment to key (typically email)
+${CYAN}ssh-keygen -p -f ~/.ssh/key${RESET} - Change passphrase of existing key
+
+# Key Management
+${CYAN}ssh-add ~/.ssh/key${RESET}         - Add key to SSH agent
+${CYAN}ssh-add -l${RESET}                 - List fingerprints of loaded keys
+${CYAN}ssh-add -L${RESET}                 - List public keys of loaded identities
+${CYAN}ssh-add -d ~/.ssh/key${RESET}      - Remove key from agent
+${CYAN}ssh-add -D${RESET}                 - Remove all keys from agent
+${CYAN}ssh-add -t 3600 ~/.ssh/key${RESET} - Add key with timeout (seconds)
+
+# Key Distribution
+${CYAN}ssh-copy-id user@hostname${RESET}  - Copy public key to remote host
+${CYAN}ssh-copy-id -i ~/.ssh/key.pub user@host${RESET} - Copy specific key
+${CYAN}cat ~/.ssh/id_ed25519.pub | ssh user@host "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"${RESET} - Manual key copy
+
+# SSH Config & Info
+${CYAN}~/.ssh/config${RESET}              - SSH client configuration file
+${CYAN}ssh -v user@host${RESET}           - Verbose connection (debugging)
+${CYAN}ssh -vv user@host${RESET}          - More verbose output
+${CYAN}ssh -vvv user@host${RESET}         - Most verbose output
+${CYAN}ssh-keygen -l -f ~/.ssh/key.pub${RESET} - Show fingerprint of public key
+${CYAN}ssh-keyscan hostname${RESET}       - Get host public key (for known_hosts)
+
+# SSH Tunneling
+${CYAN}ssh -L 8080:localhost:80 user@host${RESET} - Local port forwarding
+${CYAN}ssh -R 8080:localhost:80 user@host${RESET} - Remote port forwarding
+${CYAN}ssh -D 1080 user@host${RESET}      - SOCKS proxy via SSH
+${CYAN}ssh -N user@host${RESET}           - Do not execute remote command (for tunnels)
+EOF
+    ;;
+
   dev)
     cat <<EOF
 ${BOLD}${YELLOW}--- Development Tools ---${RESET}
@@ -340,7 +398,7 @@ EOF
     cat <<EOF
 ${BOLD}${YELLOW}--- Aliases Summary ---${RESET}
 ${CYAN}nav${RESET}, ${CYAN}files${RESET}, ${CYAN}search${RESET}, ${CYAN}tmux${RESET}, ${CYAN}git${RESET}, ${CYAN}docker${RESET}, ${CYAN}gcloud${RESET}, ${CYAN}system${RESET}, ${CYAN}network${RESET}, ${CYAN}dev${RESET},
-${CYAN}archive${RESET}, ${CYAN}custom${RESET}, ${CYAN}aliases${RESET}, ${CYAN}functions${RESET}, ${CYAN}tips${RESET}, ${CYAN}colors${RESET}
+${CYAN}archive${RESET}, ${CYAN}custom${RESET}, ${CYAN}aliases${RESET}, ${CYAN}functions${RESET}, ${CYAN}tips${RESET}, ${CYAN}colors${RESET}, ${CYAN}ssh${RESET}
 EOF
     ;;
 
@@ -498,4 +556,4 @@ EOF
     ;;
 esac
 
-exit 0
+exit 0 
