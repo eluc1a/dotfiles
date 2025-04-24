@@ -17,6 +17,7 @@ alias 5='cd -5'
 alias 6='cd -6'
 alias 7='cd -7'
 alias 8='cd -8'
+alias dot='cd ~/.dotfiles'
 
 # --- File Listing & Management ---------------------------------------
 alias ls='eza -l --icons --git'
