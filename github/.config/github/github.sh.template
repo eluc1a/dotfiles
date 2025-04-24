@@ -1,22 +1,53 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -e
 
 # ==== Configurable Variables ====
 GIT_USER_NAME="<YOUR_USER_NAME>"
 GIT_USER_EMAIL="<YOUR_EMAIL_ADDRESS>"
 SSH_KEY_FILE="<YOUR_SSH_KEY>" # just the key name in ~/.ssh
-
 # ===============================
 
-# Configure git for personal use
-git config --global user.name "$GIT_USER_NAME"
-git config --global user.email "$GIT_USER_EMAIL"
 
-# If you use different SSH keys, you can set the SSH command
+# Parse flags
+GLOBAL=false
+usage(){
+  cat <<EOF
+Usage: $0 [--global|-g]
+
+  -g, --global   Write Git settings to ~/.gitconfig (global).
+  -h, --help     Show this message.
+EOF
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -g|--global) GLOBAL=true; shift ;;
+    -h|--help)   usage; exit 0 ;;
+    *)           echo "Unknown option: $1" >&2; usage; exit 1 ;;
+  esac
+done
+
+# Configure Git
+if [[ "$GLOBAL" == true ]]; then
+  GIT_SCOPE="--global"
+  PROFILE="GLOBAL"
+  git config $GIT_SCOPE user.name  "$GIT_USER_NAME"
+  git config $GIT_SCOPE user.email "$GIT_USER_EMAIL"
+else
+  PROFILE="LOCAL"
+  if git rev-parse --git-dir >/dev/null 2>&1; then
+    git config user.name  "$GIT_USER_NAME"
+    git config user.email "$GIT_USER_EMAIL"
+  else
+    echo "⚠️  Not in a Git repo, skipping local git config"
+  fi
+fi
+
+# Always export SSH override for this session
 export GIT_SSH_COMMAND="ssh -i ~/.ssh/$SSH_KEY_FILE"
 
-# Switch to PERSONAL GCP account
-gcloud config set account "$GIT_USER_EMAIL"
+# Switch GCP account
+gcloud config set account "$GIT_USER_EMAIL" >/dev/null
 
-echo "GitHub configuration switched to PERSONAL profile."
-echo "Google Cloud account switched to PERSONAL: $GIT_USER_EMAIL"
-
+echo "✔️  GitHub configuration switched to $PROFILE profile."
+echo "🔑  Google Cloud account switched to: $GIT_USER_EMAIL"
