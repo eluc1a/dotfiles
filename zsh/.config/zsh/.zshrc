@@ -33,10 +33,23 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # --- SSH Agent Setup ---
-if [ -z "$SSH_AUTH_SOCK" ]; then
-    eval $(ssh-agent -s)
-    ssh-add ~/.ssh/id_rsa
+# Start agent if SSH_AUTH_SOCK is unset or points at a dead socket
+if [ -z "$SSH_AUTH_SOCK" ] || [ ! -S "$SSH_AUTH_SOCK" ]; then
+  eval "$(ssh-agent -s)"
 fi
+
+# List of keys to load
+SSH_KEYS=(
+  ~/.ssh/mac_personal_github
+  ~/.ssh/adtalem_github
+  ~/.ssh/id_rsa
+)
+
+# Add each key (Use -K on macOS to store passphrase in Keychain)
+for key in "${SSH_KEYS[@]}"; do
+  [ -f "$key" ] || continue
+  ssh-add -K "$key" >/dev/null 2>&1
+done
 
 # --- Source Modular Config Files ---
 # Load environment variables first as other configs may depend on them
@@ -57,10 +70,6 @@ elif [[ "$(uname)" == "Linux" ]]; then
     source ~/.config/zsh/linux/completions.zsh
 fi
 
-# source ~/.config/zsh/env.zsh
-# source ~/.config/zsh/aliases.zsh
-# source ~/.config/zsh/functions.zsh
-# source ~/.config/zsh/completions.zsh
 
 # --- Additional Plugin Sources ---
 # Source zsh-syntax-highlighting if it exists
