@@ -1,0 +1,62 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/service-widgets
+
+# - resources:
+#     cpu: true
+#     memory: true
+#     disk: /
+
+- search:
+    provider: duckduckgo
+    target: _blank
+
+- openmeteo:
+    label: Arlington # optional
+    latitude: 38.8816
+    longitude: -77.1043
+      #timezone: Americas/New_York # optional
+    units: imperial # or imperial
+    cache: 5 # Time in minutes to cache API responses, to stay within limits
+
+- glances:
+    label: Fox # optional
+    url: http://192.168.89:61208
+    username: glances # optional if auth enabled in Glances
+    password: pass # optional if auth enabled in Glances
+    cpu: true # optional, enabled by default, disable by setting to false
+    mem: true # optional, enabled by default, disable by setting to false
+    cputemp: true # disabled by default
+    uptime: false # disabled by default
+    disk: 
+        - /
+        - /mnt/storage1 # disabled by default, use mount point of disk(s) in glances. Can also be a list (see below)
+    expanded: true # show the expanded view
+    
+
+- glances:
+    label: Viper # optional
+    url: http://192.168.0.88:61208
+    username: glances # optional if auth enabled in Glances
+    password: pass # optional if auth enabled in Glances
+    cpu: true # optional, enabled by default, disable by setting to false
+    mem: true # optional, enabled by default, disable by setting to false
+    cputemp: true # disabled by default
+    uptime: false # disabled by default
+    disk: 
+        - /
+        - /mnt/storage1 # disabled by default, use mount point of disk(s) in glances. Can also be a list (see below)
+    expanded: true # show the expanded view
+    
+
+# - glances:
+#     url: http://192.168.0.9:61208
+#     username: glances # optional if auth enabled in Glances
+#     password: pass # optional if auth enabled in Glances
+#     cpu: true # optional, enabled by default, disable by setting to false
+#     mem: true # optional, enabled by default, disable by setting to false
+#     cputemp: true # disabled by default
+#     uptime: true # disabled by default
+#     disk: / # disabled by default, use mount point of disk(s) in glances. Can also be a list (see below)
+#     expanded: true # show the expanded view
+#     label: Pi4 # optional

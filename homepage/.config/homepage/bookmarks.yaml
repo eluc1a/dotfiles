@@ -1,0 +1,37 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/bookmarks
+
+- CuriosityFox:
+    - Etsy:
+        - abbr: ET
+          href: https://www.etsy.com/your/shops/me/dashboard?ref=seller-platform-mcnav
+    - Gelato:
+        - abbr: GE
+          href: https://dashboard.gelato.com/stores/16043c92-ed7b-4f0b-aa48-1e56acedec3c/products/list?locale=en
+    - Rank Shuffle:
+        - abbr: RS
+          href: https://www.midjourney.com/rank
+    - Vela:
+        - abbr: VE
+          href: https://getvela.com/
+
+- Social:
+    - Reddit:
+        - abbr: RE
+          icon: reddit.png
+          href: https://old.reddit.com/
+    - Homepage:
+        - abbr: HP
+          href: https://gethomepage.dev/v0.8.3/
+
+- Entertainment:
+    - IPTorrents:
+        - abbr: IPT
+          href: https://iptorrents.com/t
+    - NZBgeek:
+        - abbr: NZ
+          href: https://nzbgeek.info/dashboard.php
+    - YouTube:
+        - abbr: YT
+          href: https://youtube.com/

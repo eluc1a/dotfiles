@@ -1,0 +1,236 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/services
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~ MOVIES/TV SHOWS ~~~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Movies/TV Shows: 
+
+    - Overseer:
+        icon: overseerr.png
+        href: http://<OVERSEER_IP>:<OVERSEER_PORT>
+        description: <OVERSEER_DESCRIPTION>
+        ping: <OVERSEER_IP>:<OVERSEER_PORT>
+        widget:
+          type: overseerr
+          url: http://<OVERSEER_IP>:<OVERSEER_PORT>
+          key: <YOUR_OVERSEER_KEY>
+          
+    - Prowlarr:
+        icon: prowlarr.png
+        href: http://<PROWLARR_IP>:<PROWLARR_PORT>
+        description: <PROWLARR_DESCRIPTION>
+        ping: http://<PROWLARR_IP>:<PROWLARR_PORT>
+        widget:
+          type: prowlarr
+          url: http://<PROWLARR_IP>:<PROWLARR_PORT>
+          key: <YOUR_PROWLARR_KEY>
+
+    - Sonarr:
+        icon: sonarr.png
+        href: http://<SONARR_IP>:<SONARR_PORT>
+        description: <SONARR_DESCRIPTION>
+        ping: <SONARR_IP>:<SONARR_PORT>
+        widget:
+          type: sonarr
+          url: http://<SONARR_IP>:<SONARR_PORT>
+          key: <YOUR_SONARR_KEY>
+          
+    - Radarr:
+        icon: radarr.png
+        href: http://<RADARR_IP>:<RADARR_PORT>
+        description: <RADARR_DESCRIPTION>
+        ping: <RADARR_IP>:<RADARR_PORT>
+        widget:
+          type: radarr
+          url: http://<RADARR_IP>:<RADARR_PORT>
+          key: <YOUR_RADARR_KEY>
+          
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~ JACK SPARROW ~~~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Jack Sparrow:
+
+    - Plex:
+        icon: plex.png
+        href: http://<PLEX_IP>:<PLEX_PORT>/web
+        description: <PLEX_DESCRIPTION>
+        ping: <PLEX_IP>:<PLEX_PORT>
+        widget:
+          type: plex
+          url: http://<PLEX_IP>:<PLEX_PORT>
+          key: <YOUR_PLEX_KEY>
+    - Tautulli:
+        icon: plex.png
+        href: http://<TAUTULLI_IP>:<TAUTULLI_PORT>/home
+        description: <TAUTULLI_DESCRIPTION>
+        ping: <PLEX_IP>:<PLEX_PORT>
+        widget:
+          type: tautulli
+          url: http://<TAUTULLI_IP>:<TAUTULLI_PORT>
+          key: <YOUR_TAUTULLI_KEY>
+    # Add to your homepage's services.yaml
+    - WireGuard:
+        icon: mdi-vpn
+        description: <WIREGUARD_DESCRIPTION>
+        widget:
+          type: customapi
+          url: http://<WIREGUARD_IP>:<WIREGUARD_PORT>/api/wgpeer
+          refreshInterval: 10000 # 10s
+          method: GET
+          headers:
+            X-API-Token: <YOUR_WG_API_TOKEN>
+          mappings:
+            - field: connected
+              label: Connected
+              format: text
+            - field: latest_handshake
+              label: Handshake
+              format: text
+            - field: endpoint
+              label: Endpoint
+              format: text
+            - field: allowed_ips
+              label: Allowed IPs
+              format: text
+            - field: received
+              label: Received
+              format: text
+            - field: sent
+              label: Sent
+              format: text
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~ HOME ~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Home:
+    - PIA:
+        icon: si-privateinternetaccess-#4BB749
+        description: <PIA_DESCRIPTION>
+        ping: <PIA_IP>:<PIA_PORT>
+        widget:
+          type: customapi
+          url: http://<PIA_IP>:<PIA_PORT>/api/pia
+          refreshInterval: 10000 # 10 seconds
+          method: GET
+          headers:
+            X-API-Token: <YOUR_PIA_API_TOKEN>
+          mappings:
+            - field: connectionstate
+              label: State
+              format: text
+            # - field: allowlan
+            #   label: Allow LAN
+            #   format: text
+            - field: portforward
+              label: Port Forward
+              format: text
+            # - field: protocol
+            #   label: Protocol
+            #   format: text
+            - field: pubip
+              label: Public IP
+              format: text
+            - field: vpnip
+              label: VPN IP
+              format: text
+                #- field: region
+              # label: Region
+                #  format: text
+            # - field: requestportforward
+            #   label: Request Port Forward
+            #   format: text
+            
+
+    - Deluge:
+        icon: deluge.png
+        href: http://<DELUGE_IP>:<DELUGE_PORT>
+        description: <DELUGE_DESCRIPTION>
+        ping: <DELUGE_IP>:<DELUGE_PORT>
+        widget:
+          type: deluge
+          url: http://<DELUGE_IP>:<DELUGE_PORT>
+          password: <YOUR_DELUGE_PASSWORD>
+
+    - SABnzbd:
+        icon: sabnzbd.png
+        href: http://<SABNZBD_IP>:<SABNZBD_PORT>/sabnzbd
+        description: <SABNZBD_DESCRIPTION>
+        ping: <SABNZBD_IP>:<SABNZBD_PORT>
+        widget:
+          type: sabnzbd
+          url: http://<SABNZBD_IP>:<SABNZBD_PORT>
+          key: <YOUR_SABNZBD_KEY>
+
+    - Deluge:
+        icon: deluge.png
+        href: http://<DELUGE2_IP>:<DELUGE2_PORT>
+        description: <DELUGE2_DESCRIPTION>
+        ping: <DELUGE_IP>:<DELUGE_PORT>
+        widget:
+          type: deluge
+          url: http://<DELUGE_IP>:<DELUGE_PORT>
+          password: <YOUR_DELUGE_KEY>
+
+- FOX:
+  - CPU Usage:
+      widget:
+        type: glances
+        url: http://<FOX_IP>:<FOX_GLANCES_PORT>
+        metric: info
+  - Network Usage:
+      widget:
+        type: glances
+        url: http://<FOX_IP>:<FOX_GLANCES_PORT>
+        metric: network:enp3s0
+  - Process:
+      widget:
+        type: glances
+        url: http://<FOX_IP>:<FOX_GLANCES_PORT>
+        metric: process
+
+- VIPER:
+  - CPU Usage:
+      widget:
+        type: glances
+        url: http://<VIPER_IP>:<VIPER_GLANCES_PORT>
+        metric: info
+  - Network Usage:
+      widget:
+        type: glances
+        url: http://<VIPER_IP>:<VIPER_GLANCES_PORT>
+        metric: network:eth0
+  - Process:
+      widget:
+        type: glances
+        url: http://<VIPER_IP>:<VIPER_GLANCES_PORT>
+        metric: process
+
+
+- Calendar:
+    - Calendar:
+        widget:
+          type: calendar
+          firstDayInWeek: sunday # optional - defaults to monday
+          view: monthly # optional - possible values monthly, agenda
+          maxEvents: 10 # optional - defaults to 10
+          showTime: true # optional - show time for event happening today - defaults to false
+          integrations: # optional
+            - type: sonarr # active widget type that is currently enabled on homepage - possible values: radarr, sonarr, lidarr, readarr, ical
+              service_group: Movies/TV Shows # group name where widget exists
+              service_name: Sonarr # service name for that widget
+              color: teal # optional - defaults to pre-defined color for the service (teal for sonarr)
+              params: # optional - additional params for the service
+                unmonitored: true # optional - defaults to false, used with *arr stack
+            - type: radarr
+              service_group: Movies/TV Shows
+              service_name: Radarr
+              params:
+                unmonitored: true
+
+

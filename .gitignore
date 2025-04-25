@@ -8,3 +8,5 @@ adopt_remaining.sh
 **/AppSupport/*
 **/private/*
 **/sockets/*
+**/logs/*
+**/homepage/services.yaml

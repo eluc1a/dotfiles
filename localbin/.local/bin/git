@@ -1,39 +1,30 @@
 #!/usr/bin/env bash
 # git wrapper – run gitleaks before "git add", unless --override
+#   • honours .gitignore
+#   • uses custom rules at ~/.config/gitleaks/.gitleaks.toml
+#   • skips commit history so the scan stays fast
 
 ###############################################################################
-# Bail out immediately if we've already passed through the wrapper once
+# 0. Stop recursion                                                                  #
 ###############################################################################
 if [[ -n "$GIT_WRAPPER_SENTINEL" ]]; then
   exec "$GIT_WRAPPER_SENTINEL" "$@"
 fi
 
 ###############################################################################
-# 1.  Resolve the directory we're running from (symlink-aware & canonical)
+# 1. Remove *this* directory from PATH, then locate the real git                #
 ###############################################################################
 WRAPPER_DIR="$(cd "$(dirname "$0")" && pwd -P)"
-
-###############################################################################
-# 2.  Remove **that exact directory** from PATH, no matter what it is
-###############################################################################
-export PATH="$(printf '%s' "$PATH" |
-               tr ':' '\n' |
-               grep -v -F "$WRAPPER_DIR" |
-               paste -sd ':' -)"
-
-###############################################################################
-# 3.  Find the real git now that our own dir is gone
-###############################################################################
+export PATH="$(printf '%s' "$PATH" | tr ':' '\n' | grep -v -F "$WRAPPER_DIR" | paste -sd ':' -)"
 REAL_GIT="$(command -v git)"
-export GIT_WRAPPER_SENTINEL="$REAL_GIT"   # future calls skip wrapper
+export GIT_WRAPPER_SENTINEL="$REAL_GIT"
 
 ###############################################################################
-# 4.  Intercept only the `add` sub-command
+# 2. Intercept only `git add`                                                   #
 ###############################################################################
 if [[ $1 == "add" ]]; then
-  shift        # drop the literal sub-command
-  override=0
-  args=()
+  shift
+  override=0; args=()
 
   for arg in "$@"; do
     case "$arg" in
@@ -44,13 +35,28 @@ if [[ $1 == "add" ]]; then
   done
 
   if (( override == 0 )); then
-    gitleaks protect --staged --verbose
-    status=$?
-    if (( status != 0 )); then
-      echo "🚫  gitleaks found secrets in staged files."
-      echo "    Use '--override' to bypass."
-      exit $status
-    fi
+    GITLEAKS_CONFIG="${GITLEAKS_CONFIG:-$HOME/.config/gitleaks/.gitleaks.toml}"
+
+    # Build list of candidate files that would be added (tracked-modified or
+    # untracked) while respecting .gitignore via Git itself. Scan each file
+    # individually so ignored paths never reach gitleaks.
+    mapfile -d '' scan_files < <(
+      git ls-files -z --cached --others --exclude-standard -- "${args[@]:-.}"
+    )
+    for file in "${scan_files[@]}"; do
+      [[ -z "$file" ]] && continue
+      gitleaks detect \
+        -c "$GITLEAKS_CONFIG" \
+        --no-git \
+        -s "$file" \
+        --verbose
+      status=$?
+      if (( status != 0 )); then
+        echo "🚫  Gitleaks caught secrets in '$file'."
+        echo "    Fix them or rerun with '--override' if you *really* want to stage anyway."
+        exit $status
+      fi
+    done
   fi
 
   exec "$REAL_GIT" add "${args[@]}"
