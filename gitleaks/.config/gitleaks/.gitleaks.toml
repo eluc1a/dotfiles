@@ -1,0 +1,8 @@
+title = "Custom YAML-Key Rules"
+
+[[rules]]
+description = "Generic YAML key field"
+id          = "yaml-key-field"
+# allow letters, digits, dash, underscore, slash, plus, equals
+regex       = '''(?mi)^\s*key:\s*["']?([A-Za-z0-9_\-=/+]{15,})["']?'''
+secretGroup = 1
