@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# git wrapper – run gitleaks before "git add", unless --override
+
+###############################################################################
+# Bail out immediately if we've already passed through the wrapper once
+###############################################################################
+if [[ -n "$GIT_WRAPPER_SENTINEL" ]]; then
+  exec "$GIT_WRAPPER_SENTINEL" "$@"
+fi
+
+###############################################################################
+# 1.  Resolve the directory we're running from (symlink-aware & canonical)
+###############################################################################
+WRAPPER_DIR="$(cd "$(dirname "$0")" && pwd -P)"
+
+###############################################################################
+# 2.  Remove **that exact directory** from PATH, no matter what it is
+###############################################################################
+export PATH="$(printf '%s' "$PATH" |
+               tr ':' '\n' |
+               grep -v -F "$WRAPPER_DIR" |
+               paste -sd ':' -)"
+
+###############################################################################
+# 3.  Find the real git now that our own dir is gone
+###############################################################################
+REAL_GIT="$(command -v git)"
+export GIT_WRAPPER_SENTINEL="$REAL_GIT"   # future calls skip wrapper
+
+###############################################################################
+# 4.  Intercept only the `add` sub-command
+###############################################################################
+if [[ $1 == "add" ]]; then
+  shift        # drop the literal sub-command
+  override=0
+  args=()
+
+  for arg in "$@"; do
+    case "$arg" in
+      --override) override=1 ;;
+      -h|--help)  exec "$REAL_GIT" add -h ;;
+      *)          args+=("$arg") ;;
+    esac
+  done
+
+  if (( override == 0 )); then
+    gitleaks protect --staged --verbose
+    status=$?
+    if (( status != 0 )); then
+      echo "🚫  gitleaks found secrets in staged files."
+      echo "    Use '--override' to bypass."
+      exit $status
+    fi
+  fi
+
+  exec "$REAL_GIT" add "${args[@]}"
+else
+  exec "$REAL_GIT" "$@"
+fi
