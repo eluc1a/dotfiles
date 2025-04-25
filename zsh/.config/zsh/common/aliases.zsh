@@ -12,8 +12,8 @@ alias ...='../..'
 alias ....='../../..'
 alias .....='../../../..'
 alias ......='../../../../..'
-alias 4='cd -4'
-alias 5='cd -5'
+alias 5='cd ~/.config'
+alias 55='cd ~/.config/zsh'
 alias 6='cd -6'
 alias 7='cd -7'
 alias 8='cd -8'
@@ -107,3 +107,14 @@ alias ghw='source ~/.config/github/github-work.sh'
 alias ghp='source ~/.config/github/github-personal.sh'
 alias ggg='echo "Username: $(git config --global user.name)" && echo "Email: $(git config --global user.email)"'
 alias ggl='echo "Username: $(git config user.name)" && echo "Email: $(git config user.email)"'
+
+# --- zsh configs -----------------------------------------------------
+alias alias-common='vim ~/.config/zsh/common/aliases.zsh'
+alias env-common='vim ~/.config/zsh/common/env.zsh'
+if [[ "$(uname)" == "Darwin" ]]; then
+    alias alias-system='vim ~/.config/zsh/mac/aliases.zsh'
+    alias env-system='vim ~/.config/zsh/mac/env.zsh'
+elif [[ "$(uname)" == "Linux" ]]; then
+    alias alias-system='vim ~/.config/zsh/linux/aliases.zsh'
+    alias env-system='vim ~/.config/zsh/linux/env.zsh'
+fi
