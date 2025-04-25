@@ -10,3 +10,4 @@ adopt_remaining.sh
 **/sockets/*
 **/logs/*
 **/homepage/services.yaml
+__pycache__
