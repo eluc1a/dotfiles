@@ -53,6 +53,7 @@ display_help() {
   echo -e "  ${CYAN}ssh${RESET}        - SSH related commands and key management"
   echo -e "  ${CYAN}dev${RESET}        - Development tools (npm, python, etc.)"
   echo -e "  ${CYAN}archive${RESET}    - Archive management (tar)"
+  echo -e "  ${CYAN}uv${RESET}         - uv (Python package manager) commands"
   echo -e "  ${CYAN}custom${RESET}     - Your custom scripts, functions, and specific aliases"
   echo -e "  ${CYAN}aliases${RESET}    - Summary list of your main aliases"
   echo -e "  ${CYAN}functions${RESET}  - Summary list of your main functions"
@@ -201,10 +202,12 @@ ${CYAN}git diff${RESET}                 - Show changes
 ${CYAN}git remote -v${RESET}            - List remote repositories
 ${CYAN}git clone <url>${RESET}          - Clone a repository
 
-# Sync Local Repo with New Remote
-${CYAN}git remote add origin <URL>${RESET} - Add new remote repo URL
-${CYAN}git branch -M main${RESET}          - Rename local branch to 'main'
-${CYAN}git push -u origin main${RESET}     - Push to new remote & set upstream
+# Sync Local Repo with New Remote (Created on GitHub UI)
+${CYAN}# 1. Create a new repository on GitHub (without README, .gitignore or license).
+${CYAN}# 2. In your existing local repo (after git init):
+${CYAN}git remote add origin <repository_url>${RESET} - Link local repo to the remote GitHub repo URL
+${CYAN}git branch -M main${RESET}          - Rename the default branch to 'main' (if needed)
+${CYAN}git push -u origin main${RESET}     - Push local main branch to GitHub & set upstream
 
 # Your Aliases
 ${CYAN}ghw${RESET}            - Source GitHub work credentials script
@@ -545,6 +548,46 @@ ${CYAN}gcloud sql instances list${RESET}              - List Cloud SQL instances
 ${CYAN}gcloud functions list${RESET}                  - List Cloud Functions
 ${CYAN}gcloud run services list${RESET}               - List Cloud Run services
 ${CYAN}gcloud logging read <filter>${RESET}            - Read logs
+EOF
+    ;;
+
+  uv)
+    cat <<EOF
+${BOLD}${YELLOW}--- uv (Python Package/Project Manager) ---${RESET}
+${CYAN}uv --version${RESET}         - Show uv version
+${CYAN}uv init${RESET}              - Initialize a new project (creates pyproject.toml)
+${CYAN}uv venv${RESET}              - Create a virtual environment in .venv/
+${CYAN}source .venv/bin/activate${RESET} - Activate the virtual environment (Linux/Mac)
+${CYAN}.venv\\Scripts\\activate${RESET}   - Activate the virtual environment (Windows)
+${CYAN}deactivate${RESET}           - Deactivate the virtual environment
+
+# Package Management (within active venv or using uv run)
+${CYAN}uv pip install <pkg>${RESET}   - Install a package
+${CYAN}uv pip install -r reqs.txt${RESET} - Install from requirements file
+${CYAN}uv pip install -e .${RESET}    - Install package in editable mode
+${CYAN}uv pip uninstall <pkg>${RESET}- Uninstall a package
+${CYAN}uv pip list${RESET}           - List installed packages
+${CYAN}uv pip freeze${RESET}         - Output installed packages in requirements format
+${CYAN}uv pip sync${RESET}          - Synchronize environment with requirements/pyproject.toml
+${CYAN}uv pip sync --refresh${RESET} - Force refresh during sync (reinstall packages)
+
+# Project Management (using pyproject.toml)
+${CYAN}uv add <pkg>${RESET}         - Add a dependency to pyproject.toml and install/sync
+${CYAN}uv add --dev <pkg>${RESET}   - Add a dev dependency to pyproject.toml
+${CYAN}uv remove <pkg>${RESET}      - Remove dependency from pyproject.toml and uninstall/sync
+${CYAN}uv sync${RESET}              - Install project dependencies from uv.lock (or pyproject.toml if no lock)
+${CYAN}uv lock${RESET}              - Create/update uv.lock from pyproject.toml
+${CYAN}uv lock --upgrade${RESET}    - Update all dependencies in uv.lock to latest allowed
+${CYAN}uv lock --upgrade-package <pkg>${RESET} - Update a specific package in uv.lock
+
+# Running Commands
+${CYAN}uv run <cmd> [args..]${RESET} - Run a command within the project's venv
+${CYAN}uvx <pkg> [args..]${RESET}    - Run a command from a package without installing it (similar to npx)
+
+# Other
+${CYAN}uv build${RESET}             - Build source distribution and wheel
+${CYAN}uv cache clean${RESET}       - Clear the uv cache
+${CYAN}uv cache dir${RESET}         - Show the uv cache directory path
 EOF
     ;;
 
