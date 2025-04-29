@@ -1,14 +1,21 @@
 #!/usr/bin/env bash
-set -e
+# ~/.config/github/github-work.sh
+# Intended to be sourced:  source ~/.config/github/github-work.sh
+# --------------------------------------------------------------
+
+# --- Save caller's errexit state --------------------------------
+errexit_was_on=false
+[[ $- == *e* ]] && errexit_was_on=true   # $- contains option letters that are on
+set -e                                   # turn it on for the script body
 
 # ==== Configurable Variables ====
-GIT_USER_NAME="<YOUR_USER_NAME>"
+GIT_USER_NAME="<YOUR_USERNAME>"
 GIT_USER_EMAIL="<YOUR_EMAIL_ADDRESS>"
-SSH_KEY_FILE="<YOUR_SSH_KEY>" # just the key name in ~/.ssh
-# ===============================
+SSH_KEY_FILE="<YOUR_SSH_KEY>"            # key under ~/.ssh/<YOUR_SSH_KEY>
+# =================================
 
-
-# Parse flags
+# (all of your existing logic stays exactly the same)
+# ---------------------------------------------------------------
 GLOBAL=false
 usage(){
   cat <<EOF
@@ -22,12 +29,11 @@ EOF
 while [[ $# -gt 0 ]]; do
   case "$1" in
     -g|--global) GLOBAL=true; shift ;;
-    -h|--help)   usage; exit 0 ;;
-    *)           echo "Unknown option: $1" >&2; usage; exit 1 ;;
+    -h|--help)   usage; return 0 ;;          # “return”, because we’re sourced
+    *)           echo "Unknown option: $1" >&2; usage; return 1 ;;
   esac
 done
 
-# Configure Git
 if [[ "$GLOBAL" == true ]]; then
   GIT_SCOPE="--global"
   PROFILE="GLOBAL"
@@ -43,11 +49,13 @@ else
   fi
 fi
 
-# Always export SSH override for this session
-export GIT_SSH_COMMAND="ssh -i ~/.ssh/$SSH_KEY_FILE"
+export GIT_SSH_COMMAND="ssh -i \"$HOME/.ssh/$SSH_KEY_FILE\""
 
-# Switch GCP account
 gcloud config set account "$GIT_USER_EMAIL" >/dev/null
 
 echo "✔️  GitHub configuration switched to $PROFILE profile."
 echo "🔑  Google Cloud account switched to: $GIT_USER_EMAIL"
+
+# --- Restore caller's errexit state -----------------------------
+$errexit_was_on || set +e
+# ----------------------------------------------------------------
