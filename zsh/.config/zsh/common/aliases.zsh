@@ -54,6 +54,9 @@ alias pgrep='pgrep -fli'
 alias run-help='man'
 alias which-command='whence'
 alias bmux='tmux attach -t btop'
+alias yabai-start='yabai --start-service'
+alias yabai-restart='yabai --restart-service'
+alias yabai-stop='yabai --stop-service'
 
 # --- System & Network -------------------------------------------------
 alias listen='sudo lsof -i -P -n | grep LISTEN'
