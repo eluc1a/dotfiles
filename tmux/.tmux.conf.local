@@ -1,0 +1,3 @@
+# Add your local tmux config here
+set -g status-bg colour90
+set -g status-fg colour183
