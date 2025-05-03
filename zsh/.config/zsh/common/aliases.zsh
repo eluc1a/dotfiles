@@ -37,6 +37,8 @@ alias pwdc='pwd | pbcopy'
 alias p='pbpaste'
 alias remove-node-modules='find . -name '\''node_modules'\'' -type d -prune -exec rm -rf '\''{}'\'' +'
 alias cat='bat --paging=never'
+alias e='exit'
+alias el='logout'
 
 # ripgrep helpers
 alias rg='rg --smart-case'
