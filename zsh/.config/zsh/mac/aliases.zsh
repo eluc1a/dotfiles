@@ -37,3 +37,6 @@ alias 99='/Users/ilyakhruschev/AdTalem/github_repos'
 alias KK='cd /Applications/Native\ Instruments/Komplete\ Kontrol/Komplete\ Kontrol.app/Contents/'
 alias musicd='/Users/ilyakhruschev/Documents/_music/Dynaton'
 alias musicp='/Users/ilyakhruschev/Documents/_music/Elucia'
+
+alias disable-smoothing='defaults -currentHost write -g AppleFontSmoothing -int 0'
+alias enable-smoothing='defaults -currentHost delete -g AppleFontSmoothing'

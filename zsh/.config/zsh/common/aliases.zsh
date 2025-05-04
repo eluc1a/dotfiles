@@ -29,6 +29,7 @@ alias lt='eza -T --icons --git-ignore'     # tree view
 alias lta='eza -Ta --icons --git-ignore'   # tree view incl. dot‑files
 alias lsh='ls -d .[^.]*'
 alias lg='eza -l --icons --git | grep '
+alias trees='eza --tree --icons --git'
 alias mkdir='mkdir -p'
 alias rd='rmdir'
 alias search='tree -f | grep '
@@ -117,6 +118,7 @@ alias ggl='echo "Username: $(git config user.name)" && echo "Email: $(git config
 
 # --- zsh configs -----------------------------------------------------
 alias alias-common='vim ~/.config/zsh/common/aliases.zsh'
+alias alias-mac='vim ~/.config/zsh/mac/aliases.zsh'
 alias env-common='vim ~/.config/zsh/common/env.zsh'
 if [[ "$(uname)" == "Darwin" ]]; then
     alias alias-system='vim ~/.config/zsh/mac/aliases.zsh'
