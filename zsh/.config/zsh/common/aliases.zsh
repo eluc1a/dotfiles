@@ -71,6 +71,7 @@ alias logs='journalctl -fu'
 alias logs-all='journalctl -u'
 alias update-debian='sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade -y'
 alias weather='curl wttr.in/'
+alias externalip='curl ipinfo.io/ip'
 
 # --- Development Tools ------------------------------------------------
 alias vim='nvim'
