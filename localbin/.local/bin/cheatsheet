@@ -54,6 +54,7 @@ display_help() {
   echo -e "  ${CYAN}dev${RESET}        - Development tools (npm, python, etc.)"
   echo -e "  ${CYAN}archive${RESET}    - Archive management (tar)"
   echo -e "  ${CYAN}uv${RESET}         - uv (Python package manager) commands"
+  echo -e "  ${CYAN}stow${RESET}       - GNU Stow (symlink farm manager) commands"
   echo -e "  ${CYAN}custom${RESET}     - Your custom scripts, functions, and specific aliases"
   echo -e "  ${CYAN}aliases${RESET}    - Summary list of your main aliases"
   echo -e "  ${CYAN}functions${RESET}  - Summary list of your main functions"
@@ -194,8 +195,10 @@ ${CYAN}git push [rem] [br]${RESET}       - Push commits to remote
 ${CYAN}git pull [rem] [br]${RESET}       - Fetch & integrate changes
 ${CYAN}git fetch [remote]${RESET}        - Download objects/refs from another repo
 ${CYAN}git branch${RESET}               - List branches (-a for all, -d to delete)
-${CYAN}git checkout <branch>${RESET}     - Switch branches
-${CYAN}git checkout -b <new>${RESET}     - Create & switch to new branch
+${CYAN}git checkout <branch>${RESET}     - Switch branches (older command)
+${CYAN}git checkout -b <new>${RESET}     - Create & switch to new branch (older command)
+${CYAN}git switch <branch>${RESET}       - Switch to an existing branch (newer command)
+${CYAN}git switch -c <new>${RESET}       - Create & switch to a new branch (newer command)
 ${CYAN}git merge <branch>${RESET}        - Merge specified branch into current
 ${CYAN}git log${RESET}                  - Show commit log (--oneline, --graph)
 ${CYAN}git diff${RESET}                 - Show changes
@@ -589,10 +592,38 @@ ${CYAN}uv build${RESET}             - Build source distribution and wheel
 ${CYAN}uv cache clean${RESET}       - Clear the uv cache
 ${CYAN}uv cache dir${RESET}         - Show the uv cache directory path
 EOF
-    ;;
+  ;;
 
-  *)
-    echo -e "${RED}Error:${RESET} Unknown topic '$topic'"
+stow)
+  cat <<EOF
+${BOLD}${YELLOW}--- GNU Stow (Symlink Farm Manager) ---${RESET}
+# Basic Usage: stow [options] [action flag] package...
+
+${CYAN}stow <package_name>${RESET}          - Install/stow a package (create symlinks)
+${CYAN}stow -D <package_name>${RESET}        - Delete/unstow a package (remove symlinks)
+${CYAN}stow -R <package_name>${RESET}        - Restow a package (delete then stow again)
+
+# Common Options
+${CYAN}stow -d <dir> <pkg>${RESET}           - Specify stow directory (default: current dir's parent)
+${CYAN}stow -t <target_dir> <pkg>${RESET}    - Specify target directory (default: stow dir's parent)
+${CYAN}stow -n <pkg>${RESET}                 - Simulate operation (dry run), show what would be done
+${CYAN}stow -v <pkg>${RESET}                 - Verbose output
+${CYAN}stow --dotfiles <pkg>${RESET}         - Special handling for dotfiles (stows '.' prefixed files in package to target dir directly)
+
+# Advanced Options
+${CYAN}stow --ignore=<REGEX> <pkg>${RESET}   - Ignore files matching REGEX
+${CYAN}stow --defer=<REGEX> <pkg>${RESET}    - Don't stow if target is already symlinked by another package
+${CYAN}stow --override=<REGEX> <pkg>${RESET} - Force stowing even if target is symlinked by another package
+${CYAN}stow --no-folding <pkg>${RESET}       - Disable folding of directories (create full path in target)
+
+# Help & Version
+${CYAN}stow --help${RESET}                  - Show help message
+${CYAN}stow --version${RESET}               - Display version information
+EOF
+  ;;
+
+*)
+  echo -e "${RED}Error:${RESET} Unknown topic '$topic'"
     echo ""
     display_help
     exit 1
