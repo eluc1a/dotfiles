@@ -9,5 +9,6 @@ adopt_remaining.sh
 **/private/*
 **/sockets/*
 **/logs/*
+**/github-*
 **/homepage/services.yaml
 __pycache__
