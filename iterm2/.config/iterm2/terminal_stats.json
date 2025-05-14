@@ -1,0 +1,35 @@
+{
+    "child": {
+        "child1": {
+            "directory": "\/home\/elucia",
+            "height": 1001,
+            "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+            "readOnly": false,
+            "synchronizedInput": true,
+            "type": "Terminal",
+            "uuid": "a9adaf5e-64cf-41b5-b7eb-57578bfce42b",
+            "width": 955
+        },
+        "child2": {
+            "directory": "\/home\/elucia",
+            "height": 1001,
+            "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+            "readOnly": false,
+            "synchronizedInput": true,
+            "type": "Terminal",
+            "uuid": "21f86a42-28ed-4158-8e03-1437b3b9af52",
+            "width": 964
+        },
+        "orientation": 0,
+        "position": 49,
+        "ratio": 0.497395833333333315,
+        "type": "Paned"
+    },
+    "height": 1001,
+    "name": "${title}",
+    "synchronizedInput": false,
+    "type": "Session",
+    "uuid": "2a8c2b4f-d194-426b-989c-c2848626cf72",
+    "version": "1.0",
+    "width": 1920
+}

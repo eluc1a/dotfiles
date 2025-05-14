@@ -119,6 +119,7 @@ alias ggl='echo "Username: $(git config user.name)" && echo "Email: $(git config
 
 # --- zsh configs -----------------------------------------------------
 alias alias-common='vim ~/.config/zsh/common/aliases.zsh'
+alias alias-linux='vim ~/.config/zsh/linux/aliases.zsh'
 alias alias-mac='vim ~/.config/zsh/mac/aliases.zsh'
 alias env-common='vim ~/.config/zsh/common/env.zsh'
 if [[ "$(uname)" == "Darwin" ]]; then
