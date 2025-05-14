@@ -1,0 +1,44 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/settings
+
+background: 
+  # image: https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2676&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  # image: https://images.unsplash.com/photo-1502134249126-9f3755a50d78?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  # image: https://images.unsplash.com/photo-1605286700104-15889419f60b?q=80&w=1946&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  image: /images/soothing_library.png
+  # blur: None
+  # saturate: 50
+  # brightness: 100
+  opacity: 50
+
+title: Ye Olde Tavern
+providers:
+  openweathermap: <OPENWEATHERMAP_API_KEY>
+  weatherapi: weatherapiapikey
+
+layout:
+  Food:
+    style: column
+    columns: 4
+  Movies/TV Shows:
+    style: column
+    columns: 4
+  Home:
+    style: column
+    columns: 4
+  Jack Sparrow:
+    style: column
+    columns: 4
+  # FOX:
+  #   style: column
+  #   columns: 4
+  # PI5:
+  #   style: column
+  #   columns: 4
+columns: 4
+
+showStats: true
+statusStyle: dot
+cardBlur: xl
+# useEqualHeights: true
