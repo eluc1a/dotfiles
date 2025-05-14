@@ -11,4 +11,5 @@ adopt_remaining.sh
 **/logs/*
 **/github-*
 **/homepage/services.yaml
+**/homepage/settings.yaml
 __pycache__
