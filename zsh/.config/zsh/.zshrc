@@ -89,5 +89,6 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # Added by Windsurf
 export PATH="/Users/ilyakhruschev/.codeium/windsurf/bin:$PATH"
+export BAT_THEME="Coldark-Dark"
 unset LS_COLORS
 unset EZA_COLORS
