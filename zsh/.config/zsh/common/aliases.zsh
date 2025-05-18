@@ -24,12 +24,11 @@ alias dev='~/dev'
 # --- File Listing & Management ---------------------------------------
 alias ls='eza -l --icons --git --group-directories-first'
 alias lss='eza -la --icons --git --group-directories-first | grep -E "^l|^d"' # list symlinks and directories
-alias la='eza -la --icons --git --group-directories-first'
-alias lt='eza -T --icons --git-ignore --group-directories-first'     # tree view
+alias la='eza -la --icons --git --group-directories-first'alias lt='eza -T --icons --git-ignore --group-directories-first'     # tree view
 alias lta='eza -Ta --icons --git-ignore --group-directories-first'   # tree view incl. dot‑files
 alias lsh='ls -d .[^.]* --group-directories-first'
 alias lg='eza -l --icons --git --group-directories-first | grep '
-alias trees='eza --tree --icons --git'
+alias trees="eza --tree --icons --git --ignore-glob='__pycache__' --ignore-glob='*.pyc'"
 alias mkdir='mkdir -p'
 alias rd='rmdir'
 alias search='tree -f | grep '
