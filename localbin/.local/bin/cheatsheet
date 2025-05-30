@@ -559,7 +559,9 @@ EOF
 ${BOLD}${YELLOW}--- uv (Python Package/Project Manager) ---${RESET}
 ${CYAN}uv --version${RESET}         - Show uv version
 ${CYAN}uv init${RESET}              - Initialize a new project (creates pyproject.toml)
+${CYAN}uv init --python <version>${RESET} - Initialize with specific Python version (e.g., 3.11, 3.12)
 ${CYAN}uv venv${RESET}              - Create a virtual environment in .venv/
+${CYAN}uv venv --python <version>${RESET} - Create venv with specific Python version
 ${CYAN}source .venv/bin/activate${RESET} - Activate the virtual environment (Linux/Mac)
 ${CYAN}.venv\\Scripts\\activate${RESET}   - Activate the virtual environment (Windows)
 ${CYAN}deactivate${RESET}           - Deactivate the virtual environment
@@ -591,8 +593,10 @@ ${CYAN}uvx <pkg> [args..]${RESET}    - Run a command from a package without inst
 ${CYAN}uv build${RESET}             - Build source distribution and wheel
 ${CYAN}uv cache clean${RESET}       - Clear the uv cache
 ${CYAN}uv cache dir${RESET}         - Show the uv cache directory path
+${CYAN}uv python install <version>${RESET} - Install a specific Python version for uv to manage
+${CYAN}uv python list${RESET}       - List available Python versions
 EOF
-  ;;
+    ;;
 
 stow)
   cat <<EOF

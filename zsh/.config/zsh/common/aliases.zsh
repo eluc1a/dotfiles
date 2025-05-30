@@ -94,6 +94,9 @@ alias pipg='~/miniconda3/bin/pip'
 alias untarbz2='tar -xvjf'
 alias untarxz='tar -xvf'
 
+# --- Git Customs -----------------------------------------------------
+alias gFF='gcan! && gpf!'
+
 # --- Custom Scripts & Task Automation --------------------------------
 alias 11='nohup ~/miniconda3/bin/python /Users/ilyakhruschev/bash.d/key_script_runner.py &'
 alias killwork='/Users/ilyakhruschev/bash.d/killwork.sh'
@@ -115,6 +118,8 @@ alias ghw='source ~/.config/github/github-work.sh'
 alias ghp='source ~/.config/github/github-personal.sh'
 alias ggg='echo "Username: $(git config --global user.name)" && echo "Email: $(git config --global user.email)"'
 alias ggl='echo "Username: $(git config user.name)" && echo "Email: $(git config user.email)"'
+alias gcloud-elucia='gcloud config set account elucia.khruschev@mail.waldenu.edu'
+alias gcloud-service='gcloud config set account azure-devops-pipeline@daas-ml-dev.iam.gserviceaccount.com'
 
 # --- zsh configs -----------------------------------------------------
 alias alias-common='vim ~/.config/zsh/common/aliases.zsh'
