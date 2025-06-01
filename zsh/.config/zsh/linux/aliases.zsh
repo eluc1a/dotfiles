@@ -1,3 +1,5 @@
+alias susu='sudo apt-get update && sudo apt-get upgrade -y'
+alias banlist='sudo fail2ban-client status nginx-env'
 alias 0='~/.config'
 alias 00='~/dev'
 alias 1='cd /mnt/storage1/Movies'
