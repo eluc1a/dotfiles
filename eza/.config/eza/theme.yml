@@ -10,7 +10,7 @@ filekinds:
   socket: {foreground: Yellow, is_bold: true}
   special: {foreground: Yellow}
   executable: {foreground: Green, is_bold: true}
-  mount_point: {foreground: Blue, is_bold: true, is_underline: true}
+  mount_point: {foreground: Cyan, is_bold: true, is_underline: true}
 
 perms:
   user_read: {foreground: Yellow, is_bold: true}
@@ -76,7 +76,7 @@ security_context:
   range: {foreground: Cyan}
 
 file_type:
-  image: {foreground: Purple}
+  image: {foreground: "#FF5CF0", is_bold: false}
   video: {foreground: Purple, is_bold: true}
   music: {foreground: Cyan}
   lossless: {foreground: Cyan, is_bold: true}
@@ -88,13 +88,13 @@ file_type:
   build: {foreground: Yellow, is_bold: true, is_underline: true}
   source: {foreground: Yellow, is_bold: true}
 
-punctuation: {foreground: DarkGray, is_bold: true}
+punctuation: {foreground: White, is_bold: true}
 date: {foreground: "#F787FF"}
 inode: {foreground: Purple}
 blocks: {foreground: Cyan}
-header: {foreground: Default, is_underline: true}
+header: {foreground: "#FFFFFFFF", is_underline: true}
 octal: {foreground: Purple}
-flags: {foreground: Default}
+flags: {foreground: "#00C4F5"}
 
 symlink_path: {foreground: Cyan}
 control_char: {foreground: Red}
@@ -103,9 +103,48 @@ broken_path_overlay: {foreground: Default, is_underline: true}
 
 filenames:
   # Custom filename-based overrides
-  # Cargo.toml: {icon: {glyph: 🦀}}
+  # Cargo.toml: {icon: {glyph: ��}}
 
 extensions:
+  # Programming languages
+  js: {filename: {foreground: "#FF1493"}}
+  ts: {filename: {foreground: "#FF1493"}}
+  jsx: {filename: {foreground: "#FF1493"}}
+  tsx: {filename: {foreground: "#FF1493"}}
+  py: {filename: {foreground: "#14E4FF"}}
+  java: {filename: {foreground: "#FF1493"}}
+  cpp: {filename: {foreground: "#FF1493"}}
+  c: {filename: {foreground: "#FF1493"}}
+  h: {filename: {foreground: "#FF1493"}}
+  hpp: {filename: {foreground: "#FF1493"}}
+  cs: {filename: {foreground: "#FF1493"}}
+  php: {filename: {foreground: "#FF1493"}}
+  rb: {filename: {foreground: "#FF1493"}}
+  go: {filename: {foreground: "#FF1493"}}
+  rs: {filename: {foreground: "#FF1493"}}
+  swift: {filename: {foreground: "#FF1493"}}
+  kt: {filename: {foreground: "#FF1493"}}
+  scala: {filename: {foreground: "#FF1493"}}
+  pl: {filename: {foreground: "#FF1493"}}
+  sh: {filename: {foreground: "#FF1493"}}
+  bash: {filename: {foreground: "#FF1493"}}
+  zsh: {filename: {foreground: "#FF1493"}}
+  sql: {filename: {foreground: "#FF5CF0"}}
+  html: {filename: {foreground: "#FF1493"}}
+  css: {filename: {foreground: "#FF1493"}}
+  scss: {filename: {foreground: "#FF1493"}}
+  sass: {filename: {foreground: "#FF1493"}}
+  less: {filename: {foreground: "#FF1493"}}
+  json: {filename: {foreground: "#FF1493"}}
+  xml: {filename: {foreground: "#FF1493"}}
+  yaml: {filename: {foreground: "#FF1493"}}
+  yml: {filename: {foreground: "#FF1493"}}
+  toml: {filename: {foreground: "#BEE000"}}
+  ini: {filename: {foreground: "#FF1493"}}
+  cfg: {filename: {foreground: "#BEE000"}}
+  conf: {filename: {foreground: "#BEE000"}}
+  md: {filename: {foreground: "#00E400"}}
+  ipynb: {filename: {foreground: "#8DFDFF"}}
   # Custom extension-based overrides
   # rs: {filename: {foreground: Red}, icon: {glyph: 🦀}}
 
