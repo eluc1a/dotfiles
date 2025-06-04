@@ -2,7 +2,7 @@ colourful: true
 
 filekinds:
   normal: {foreground: White}
-  directory: {foreground: '#00D3B0', is_bold: true}
+  directory: {foreground: '#00AB8F', is_bold: true}
   symlink: {foreground: Cyan}
   pipe: {foreground: Yellow}
   block_device: {foreground: Yellow, is_bold: true}
@@ -10,7 +10,7 @@ filekinds:
   socket: {foreground: Yellow, is_bold: true}
   special: {foreground: Yellow}
   executable: {foreground: Green, is_bold: true}
-  mount_point: {foreground: Blue, is_bold: true, is_underline: true}
+  mount_point: {foreground: Cyan, is_bold: true, is_underline: true}
 
 perms:
   user_read: {foreground: Yellow, is_bold: true}
@@ -76,7 +76,7 @@ security_context:
   range: {foreground: Cyan}
 
 file_type:
-  image: {foreground: Purple}
+  image: {foreground: "#FF5CF0", is_bold: false}
   video: {foreground: Purple, is_bold: true}
   music: {foreground: Cyan}
   lossless: {foreground: Cyan, is_bold: true}
@@ -88,13 +88,13 @@ file_type:
   build: {foreground: Yellow, is_bold: true, is_underline: true}
   source: {foreground: Yellow, is_bold: true}
 
-punctuation: {foreground: DarkGray, is_bold: true}
+punctuation: {foreground: White, is_bold: true}
 date: {foreground: "#F787FF"}
 inode: {foreground: Purple}
 blocks: {foreground: Cyan}
-header: {foreground: Default, is_underline: true}
+header: {foreground: "#FFFFFFFF", is_underline: true}
 octal: {foreground: Purple}
-flags: {foreground: Default}
+flags: {foreground: "#00C4F5"}
 
 symlink_path: {foreground: Cyan}
 control_char: {foreground: Red}
@@ -103,9 +103,65 @@ broken_path_overlay: {foreground: Default, is_underline: true}
 
 filenames:
   # Custom filename-based overrides
-  # Cargo.toml: {icon: {glyph: 🦀}}
+  # Cargo.toml: {icon: {glyph: ��}}
 
 extensions:
-  # Custom extension-based overrides
-  # rs: {filename: {foreground: Red}, icon: {glyph: 🦀}}
+  # Python files (bright teal for high contrast on dark backgrounds)
+  py: {filename: {foreground: "#00FBFF"}}
+
+  # Jupyter Notebook files (soft lime-green)
+  ipynb: {filename: {foreground: "#00FF00"}}
+
+  # Config files (muted amber/orange)
+  yaml: {filename: {foreground: "#FFA500"}}
+  yml:  {filename: {foreground: "#FFA500"}}
+  toml: {filename: {foreground: "#FFA500"}}
+  ini:  {filename: {foreground: "#FFA500"}}
+  cfg:  {filename: {foreground: "#FFA500"}}
+  conf: {filename: {foreground: "#FFA500"}}
+  zsh:  {filename: {foreground: "#FFA500"}}
+
+  # Data storage files (earthy brown)
+  csv: {filename: {foreground: "#D2691E"}}
+  pkl: {filename: {foreground: "#D2691E"}}
+
+  # Image files (vivid magenta)
+  png:  {filename: {foreground: "#FF5CF0"}}
+  jpg:  {filename: {foreground: "#FF5CF0"}}
+  jpeg: {filename: {foreground: "#FF5CF0"}}
+  gif:  {filename: {foreground: "#FF5CF0"}}
+  bmp:  {filename: {foreground: "#FF5CF0"}}
+  svg:  {filename: {foreground: "#FF5CF0"}}
+
+  # SQL files (bright yellow)
+  sql:  {filename: {foreground: "#FFFF00"}}
+
+  # Web development files (dodger blue)
+  html: {filename: {foreground: "#1E90FF"}}
+  css:  {filename: {foreground: "#1E90FF"}}
+  js:   {filename: {foreground: "#1E90FF"}}
+  ts:   {filename: {foreground: "#1E90FF"}}
+  jsx:  {filename: {foreground: "#1E90FF"}}
+  tsx:  {filename: {foreground: "#1E90FF"}}
+  php:  {filename: {foreground: "#1E90FF"}}
+  rb:   {filename: {foreground: "#1E90FF"}}
+  go:   {filename: {foreground: "#1E90FF"}}
+  rs:   {filename: {foreground: "#1E90FF"}}
+  java: {filename: {foreground: "#1E90FF"}}
+  cpp:  {filename: {foreground: "#1E90FF"}}
+  c:    {filename: {foreground: "#1E90FF"}}
+  h:    {filename: {foreground: "#1E90FF"}}
+  hpp:  {filename: {foreground: "#1E90FF"}}
+  cs:   {filename: {foreground: "#1E90FF"}}
+  swift: {filename: {foreground: "#1E90FF"}}
+  kt:   {filename: {foreground: "#1E90FF"}}
+  scala: {filename: {foreground: "#1E90FF"}}
+  pl:   {filename: {foreground: "#1E90FF"}}
+  sh:   {filename: {foreground: "#1E90FF"}}
+  bash: {filename: {foreground: "#1E90FF"}}
+
+
+  # Special backup files (muted gray, dimmed)
+  bk:  {filename: {foreground: "#FFFFFF", is_dimmed: true}}
+  bak: {filename: {foreground: "#FFFFFF", is_dimmed: true}}
 
