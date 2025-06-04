@@ -1,0 +1,167 @@
+colourful: true
+
+filekinds:
+  normal: {foreground: White}
+  directory: {foreground: '#00AB8F', is_bold: true}
+  symlink: {foreground: Cyan}
+  pipe: {foreground: Yellow}
+  block_device: {foreground: Yellow, is_bold: true}
+  char_device: {foreground: Yellow, is_bold: true}
+  socket: {foreground: Yellow, is_bold: true}
+  special: {foreground: Yellow}
+  executable: {foreground: Green, is_bold: true}
+  mount_point: {foreground: Cyan, is_bold: true, is_underline: true}
+
+perms:
+  user_read: {foreground: Yellow, is_bold: true}
+  user_write: {foreground: Red, is_bold: true}
+  user_execute_file: {foreground: Green, is_bold: true, is_underline: true}
+  user_execute_other: {foreground: Green, is_bold: true}
+  group_read: {foreground: Yellow}
+  group_write: {foreground: Red}
+  group_execute: {foreground: Green}
+  other_read: {foreground: Yellow}
+  other_write: {foreground: Red}
+  other_execute: {foreground: Green}
+  special_user_file: {foreground: Purple}
+  special_other: {foreground: Purple}
+  attribute: {foreground: Default}
+
+size:
+  major: {foreground: Green, is_bold: true}
+  minor: {foreground: Green}
+  number_byte: {foreground: Green, is_bold: true}
+  number_kilo: {foreground: Green, is_bold: true}
+  number_mega: {foreground: Green, is_bold: true}
+  number_giga: {foreground: Green, is_bold: true}
+  number_huge: {foreground: Green, is_bold: true}
+  unit_byte: {foreground: Green}
+  unit_kilo: {foreground: Green}
+  unit_mega: {foreground: Green}
+  unit_giga: {foreground: Green}
+  unit_huge: {foreground: Green}
+
+users:
+  user_you: {foreground: "#C0D691", is_bold: false}
+  user_root: {foreground: Default}
+  user_other: {foreground: Default}
+  group_yours: {foreground: Yellow, is_bold: true}
+  group_other: {foreground: Default}
+  group_root: {foreground: Default}
+
+links:
+  normal: {foreground: Red, is_bold: true}
+  multi_link_file: {foreground: Red, background: Yellow}
+
+git:
+  new: {foreground: Green}
+  modified: {foreground: White}
+  deleted: {foreground: Red}
+  renamed: {foreground: Yellow}
+  typechange: {foreground: Purple}
+  ignored: {foreground: Default, is_dimmed: true}
+  conflicted: {foreground: Red}
+
+git_repo:
+  branch_main: {foreground: Green}
+  branch_other: {foreground: Yellow}
+  git_clean: {foreground: Green}
+  git_dirty: {foreground: Yellow}
+
+security_context:
+  colon: {foreground: Default, is_dimmed: true}
+  user: {foreground: Blue}
+  role: {foreground: Green}
+  typ: {foreground: Yellow}
+  range: {foreground: Cyan}
+
+file_type:
+  image: {foreground: "#FF5CF0", is_bold: false}
+  video: {foreground: Purple, is_bold: true}
+  music: {foreground: Cyan}
+  lossless: {foreground: Cyan, is_bold: true}
+  crypto: {foreground: Green, is_bold: true}
+  document: {foreground: Green}
+  compressed: {foreground: Yellow}
+  temp: {foreground: White}
+  compiled: {foreground: Yellow}
+  build: {foreground: Yellow, is_bold: true, is_underline: true}
+  source: {foreground: Yellow, is_bold: true}
+
+punctuation: {foreground: White, is_bold: true}
+date: {foreground: "#F787FF"}
+inode: {foreground: Purple}
+blocks: {foreground: Cyan}
+header: {foreground: "#FFFFFFFF", is_underline: true}
+octal: {foreground: Purple}
+flags: {foreground: "#00C4F5"}
+
+symlink_path: {foreground: Cyan}
+control_char: {foreground: Red}
+broken_symlink: {foreground: Red}
+broken_path_overlay: {foreground: Default, is_underline: true}
+
+filenames:
+  # Custom filename-based overrides
+  # Cargo.toml: {icon: {glyph: ��}}
+
+extensions:
+  # Python files (bright teal for high contrast on dark backgrounds)
+  py: {filename: {foreground: "#00FBFF"}}
+
+  # Jupyter Notebook files (soft lime-green)
+  ipynb: {filename: {foreground: "#00FF00"}}
+
+  # Config files (muted amber/orange)
+  yaml: {filename: {foreground: "#FFA500"}}
+  yml:  {filename: {foreground: "#FFA500"}}
+  toml: {filename: {foreground: "#FFA500"}}
+  ini:  {filename: {foreground: "#FFA500"}}
+  cfg:  {filename: {foreground: "#FFA500"}}
+  conf: {filename: {foreground: "#FFA500"}}
+  zsh:  {filename: {foreground: "#FFA500"}}
+
+  # Data storage files (earthy brown)
+  csv: {filename: {foreground: "#D2691E"}}
+  pkl: {filename: {foreground: "#D2691E"}}
+
+  # Image files (vivid magenta)
+  png:  {filename: {foreground: "#FF5CF0"}}
+  jpg:  {filename: {foreground: "#FF5CF0"}}
+  jpeg: {filename: {foreground: "#FF5CF0"}}
+  gif:  {filename: {foreground: "#FF5CF0"}}
+  bmp:  {filename: {foreground: "#FF5CF0"}}
+  svg:  {filename: {foreground: "#FF5CF0"}}
+
+  # SQL files (bright yellow)
+  sql:  {filename: {foreground: "#FFFF00"}}
+
+  # Web development files (dodger blue)
+  html: {filename: {foreground: "#1E90FF"}}
+  css:  {filename: {foreground: "#1E90FF"}}
+  js:   {filename: {foreground: "#1E90FF"}}
+  ts:   {filename: {foreground: "#1E90FF"}}
+  jsx:  {filename: {foreground: "#1E90FF"}}
+  tsx:  {filename: {foreground: "#1E90FF"}}
+  php:  {filename: {foreground: "#1E90FF"}}
+  rb:   {filename: {foreground: "#1E90FF"}}
+  go:   {filename: {foreground: "#1E90FF"}}
+  rs:   {filename: {foreground: "#1E90FF"}}
+  java: {filename: {foreground: "#1E90FF"}}
+  cpp:  {filename: {foreground: "#1E90FF"}}
+  c:    {filename: {foreground: "#1E90FF"}}
+  h:    {filename: {foreground: "#1E90FF"}}
+  hpp:  {filename: {foreground: "#1E90FF"}}
+  cs:   {filename: {foreground: "#1E90FF"}}
+  swift: {filename: {foreground: "#1E90FF"}}
+  kt:   {filename: {foreground: "#1E90FF"}}
+  scala: {filename: {foreground: "#1E90FF"}}
+  pl:   {filename: {foreground: "#1E90FF"}}
+  sh:   {filename: {foreground: "#1E90FF"}}
+  bash: {filename: {foreground: "#1E90FF"}}
+
+
+  # Special backup files (muted gray, dimmed)
+  bk:  {filename: {foreground: "#FFFFFF", is_dimmed: true}}
+  bak: {filename: {foreground: "#FFFFFF", is_dimmed: true}}
+
