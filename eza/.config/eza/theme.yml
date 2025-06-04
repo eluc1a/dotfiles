@@ -2,7 +2,7 @@ colourful: true
 
 filekinds:
   normal: {foreground: White}
-  directory: {foreground: '#00D3B0', is_bold: true}
+  directory: {foreground: '#00AB8F', is_bold: true}
   symlink: {foreground: Cyan}
   pipe: {foreground: Yellow}
   block_device: {foreground: Yellow, is_bold: true}
@@ -106,45 +106,63 @@ filenames:
   # Cargo.toml: {icon: {glyph: ��}}
 
 extensions:
-  # Programming languages
-  js: {filename: {foreground: "#FF1493"}}
-  ts: {filename: {foreground: "#FF1493"}}
-  jsx: {filename: {foreground: "#FF1493"}}
-  tsx: {filename: {foreground: "#FF1493"}}
-  py: {filename: {foreground: "#14E4FF"}}
-  java: {filename: {foreground: "#FF1493"}}
-  cpp: {filename: {foreground: "#FF1493"}}
-  c: {filename: {foreground: "#FF1493"}}
-  h: {filename: {foreground: "#FF1493"}}
-  hpp: {filename: {foreground: "#FF1493"}}
-  cs: {filename: {foreground: "#FF1493"}}
-  php: {filename: {foreground: "#FF1493"}}
-  rb: {filename: {foreground: "#FF1493"}}
-  go: {filename: {foreground: "#FF1493"}}
-  rs: {filename: {foreground: "#FF1493"}}
-  swift: {filename: {foreground: "#FF1493"}}
-  kt: {filename: {foreground: "#FF1493"}}
-  scala: {filename: {foreground: "#FF1493"}}
-  pl: {filename: {foreground: "#FF1493"}}
-  sh: {filename: {foreground: "#FF1493"}}
-  bash: {filename: {foreground: "#FF1493"}}
-  zsh: {filename: {foreground: "#FF1493"}}
-  sql: {filename: {foreground: "#FF5CF0"}}
-  html: {filename: {foreground: "#FF1493"}}
-  css: {filename: {foreground: "#FF1493"}}
-  scss: {filename: {foreground: "#FF1493"}}
-  sass: {filename: {foreground: "#FF1493"}}
-  less: {filename: {foreground: "#FF1493"}}
-  json: {filename: {foreground: "#FF1493"}}
-  xml: {filename: {foreground: "#FF1493"}}
-  yaml: {filename: {foreground: "#FF1493"}}
-  yml: {filename: {foreground: "#FF1493"}}
-  toml: {filename: {foreground: "#BEE000"}}
-  ini: {filename: {foreground: "#FF1493"}}
-  cfg: {filename: {foreground: "#BEE000"}}
-  conf: {filename: {foreground: "#BEE000"}}
-  md: {filename: {foreground: "#00E400"}}
-  ipynb: {filename: {foreground: "#8DFDFF"}}
-  # Custom extension-based overrides
-  # rs: {filename: {foreground: Red}, icon: {glyph: 🦀}}
+  # Python files (bright teal for high contrast on dark backgrounds)
+  py: {filename: {foreground: "#00FBFF"}}
+
+  # Jupyter Notebook files (soft lime-green)
+  ipynb: {filename: {foreground: "#00FF00"}}
+
+  # Config files (muted amber/orange)
+  yaml: {filename: {foreground: "#FFA500"}}
+  yml:  {filename: {foreground: "#FFA500"}}
+  toml: {filename: {foreground: "#FFA500"}}
+  ini:  {filename: {foreground: "#FFA500"}}
+  cfg:  {filename: {foreground: "#FFA500"}}
+  conf: {filename: {foreground: "#FFA500"}}
+  zsh:  {filename: {foreground: "#FFA500"}}
+
+  # Data storage files (earthy brown)
+  csv: {filename: {foreground: "#D2691E"}}
+  pkl: {filename: {foreground: "#D2691E"}}
+
+  # Image files (vivid magenta)
+  png:  {filename: {foreground: "#FF5CF0"}}
+  jpg:  {filename: {foreground: "#FF5CF0"}}
+  jpeg: {filename: {foreground: "#FF5CF0"}}
+  gif:  {filename: {foreground: "#FF5CF0"}}
+  bmp:  {filename: {foreground: "#FF5CF0"}}
+  svg:  {filename: {foreground: "#FF5CF0"}}
+
+  # SQL files (bright yellow)
+  sql:  {filename: {foreground: "#FFFF00"}}
+
+  # Web development files (dodger blue)
+  html: {filename: {foreground: "#1E90FF"}}
+  css:  {filename: {foreground: "#1E90FF"}}
+  js:   {filename: {foreground: "#1E90FF"}}
+  ts:   {filename: {foreground: "#1E90FF"}}
+  jsx:  {filename: {foreground: "#1E90FF"}}
+  tsx:  {filename: {foreground: "#1E90FF"}}
+  php:  {filename: {foreground: "#1E90FF"}}
+  rb:   {filename: {foreground: "#1E90FF"}}
+  go:   {filename: {foreground: "#1E90FF"}}
+  rs:   {filename: {foreground: "#1E90FF"}}
+  java: {filename: {foreground: "#1E90FF"}}
+  cpp:  {filename: {foreground: "#1E90FF"}}
+  c:    {filename: {foreground: "#1E90FF"}}
+  h:    {filename: {foreground: "#1E90FF"}}
+  hpp:  {filename: {foreground: "#1E90FF"}}
+  cs:   {filename: {foreground: "#1E90FF"}}
+  swift: {filename: {foreground: "#1E90FF"}}
+  kt:   {filename: {foreground: "#1E90FF"}}
+  scala: {filename: {foreground: "#1E90FF"}}
+  pl:   {filename: {foreground: "#1E90FF"}}
+  sh:   {filename: {foreground: "#1E90FF"}}
+  bash: {filename: {foreground: "#1E90FF"}}
+
+
+  # Special backup files (muted gray, dimmed)
+  bk:  {filename: {foreground: "#FFFFFF", is_dimmed: true}}
+  bak: {filename: {foreground: "#FFFFFF", is_dimmed: true}}
+>>>>>>> 772c0629a788c28afc481e3302734fa8e4f0ac64
 
