@@ -124,7 +124,8 @@ extensions:
   # Data storage files (earthy brown)
   csv: {filename: {foreground: "#D2691E"}}
   pkl: {filename: {foreground: "#D2691E"}}
-
+  parquet: {filename: {foreground: "#D2691E"}}
+  
   # Image files (vivid magenta)
   png:  {filename: {foreground: "#FF5CF0"}}
   jpg:  {filename: {foreground: "#FF5CF0"}}
