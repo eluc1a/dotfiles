@@ -55,6 +55,7 @@ display_help() {
   echo -e "  ${CYAN}archive${RESET}    - Archive management (tar)"
   echo -e "  ${CYAN}uv${RESET}         - uv (Python package manager) commands"
   echo -e "  ${CYAN}stow${RESET}       - GNU Stow (symlink farm manager) commands"
+  echo -e "  ${CYAN}hidden${RESET}     - Hidden characters detector commands"
   echo -e "  ${CYAN}custom${RESET}     - Your custom scripts, functions, and specific aliases"
   echo -e "  ${CYAN}aliases${RESET}    - Summary list of your main aliases"
   echo -e "  ${CYAN}functions${RESET}  - Summary list of your main functions"
@@ -625,6 +626,22 @@ ${CYAN}stow --help${RESET}                  - Show help message
 ${CYAN}stow --version${RESET}               - Display version information
 EOF
   ;;
+
+  hidden)
+    cat <<EOF
+${BOLD}${YELLOW}--- Hidden Characters Detector ---${RESET}
+# Checking Files
+${CYAN}hidden -f <file>${RESET}             - Check a single file for hidden markers
+${CYAN}hidden -d <dir> -r${RESET}           - Check a directory recursively for hidden markers
+
+# Cleaning Files
+${CYAN}hidden -f <file> -c${RESET}          - Check and clean a file (removing hidden markers)
+${CYAN}hidden -d <dir> -r -c -y${RESET}     - Check and clean a directory with automatic confirmation
+
+# Reference
+${CYAN}Repository${RESET}: https://github.com/juriku/hidden-characters-detector
+EOF
+    ;;
 
 *)
   echo -e "${RED}Error:${RESET} Unknown topic '$topic'"
