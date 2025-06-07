@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+~/dev/hidden-characters-detector/.venv/bin/python3 \
+  ~/dev/hidden-characters-detector/hidden-characters-detector.py \
+  "$@"
