@@ -45,7 +45,7 @@ else
     git config user.name  "$GIT_USER_NAME"
     git config user.email "$GIT_USER_EMAIL"
   else
-    echo "⚠️  Not in a Git repo, skipping local git config"
+    echo -e "\033[33m[WARNING]\033[0m  Not in a Git repo, skipping local git config"
   fi
 fi
 
@@ -53,8 +53,8 @@ export GIT_SSH_COMMAND="ssh -i \"$HOME/.ssh/$SSH_KEY_FILE\""
 
 gcloud config set account "$GIT_USER_EMAIL" >/dev/null
 
-echo "✔️  GitHub configuration switched to $PROFILE profile."
-echo "🔑  Google Cloud account switched to: $GIT_USER_EMAIL"
+echo -e "\033[32m[SUCCESS]\033[0m  GitHub configuration switched to $PROFILE profile."
+echo -e "\033[34m[INFO]\033[0m  Google Cloud account switched to: $GIT_USER_EMAIL"
 
 # --- Restore caller's errexit state -----------------------------
 $errexit_was_on || set +e
