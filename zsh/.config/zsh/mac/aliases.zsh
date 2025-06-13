@@ -26,6 +26,10 @@ alias bubu-cask-all='brew update && brew upgrade --cask && brew cleanup && brew 
 
 ######## Development tools / paths ###################################
 alias rsync='/opt/homebrew/bin/rsync'
+alias gcp-mldev='gcloud config set account azure-devops-pipeline@daas-ml-dev.iam.gserviceaccount.com'
+alias gcp-ik='gcloud config set account ikhruschev@gmail.com'
+alias gcp-me='gcloud config set account me@elucia.com'
+alias gcp-elucia='gcloud config set account elucia.khruschev@mail.waldenu.edu'
 
 ######## Project‑directory shortcuts #################################
 alias 0='/Users/ilyakhruschev/Documents/Learn/Projects/flutter_projects/wheat'
