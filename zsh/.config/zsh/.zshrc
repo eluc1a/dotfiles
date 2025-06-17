@@ -16,6 +16,7 @@ fi
 # --- Oh-My-Zsh Configuration ---
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#00a2af'
 
 # Oh-My-Zsh plugins
 plugins=(

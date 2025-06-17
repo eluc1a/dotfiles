@@ -2,6 +2,7 @@
 # nested repos we dont track
 packages/
 adopt_remaining.sh
+*.DS_Store
 **/nohup.out
 **/env.zsh
 **/github-personal.sh
