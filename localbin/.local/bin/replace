@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# replace  ── usage:  replace "<search>" "<replacement>"
+set -euo pipefail
+
+# 1️⃣  sanity-check args
+if [[ $# -ne 2 ]]; then
+  echo "Usage: $(basename "$0") <original> <replacement>" >&2
+  exit 1
+fi
+
+# 2️⃣  capture search / replacement
+export SEARCH="$1"
+# In Perl, an unescaped & in the replacement expands to the whole match — escape it.
+export REPLACE="${2//&/\\&}"
+
+# 3️⃣  find all matching files (ripgrep, null-delimited for safety) …
+rg -l0 --fixed-strings --hidden --glob '!.git/*' "$SEARCH" \
+  | \
+# 4️⃣  …and patch them in-place with Perl (handles all regex metachars via \Q … \E)
+xargs -0 -r perl -pi -e 's/\Q$ENV{SEARCH}\E/$ENV{REPLACE}/g'
+
+echo "✓ Replaced '$SEARCH' → '$2'"

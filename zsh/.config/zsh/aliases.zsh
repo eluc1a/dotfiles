@@ -137,3 +137,6 @@ alias ydr='rsync -vra --stats --ignore-existing '\''$HOME/Music/Youtube_Download
 alias re='scp ~/Downloads/*.torrent $PI42 && rm ~/Downloads/*.torrent'
 alias ri='scp ~/Downloads/FITINDEX-Elucia.csv pi@192.168.0.9:/home/pi/food/fitindex/ && rm ~/Downloads/FITINDEX-Elucia.csv'
 alias rr='rm ~/Downloads/*.torrent'
+
+alias mac-env='vim /Users/ilyakhruschev/dotfiles/zsh/.config/zsh/env.zsh'
+

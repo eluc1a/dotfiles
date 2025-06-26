@@ -44,3 +44,5 @@ alias musicp='/Users/ilyakhruschev/Documents/_music/Elucia'
 
 alias disable-smoothing='defaults -currentHost write -g AppleFontSmoothing -int 0'
 alias enable-smoothing='defaults -currentHost delete -g AppleFontSmoothing'
+
+alias mac-env='vim /Users/ilyakhruschev/dotfiles/zsh/.config/zsh/mac/env.zsh'

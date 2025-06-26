@@ -1,6 +1,12 @@
 # Add your local tmux config here
 
 
+set -g mouse on
+# make PageUp enter copy-mode and scroll
+bind-key -n PageUp copy-mode
+# make PageUp enter copy-mode and scroll
+bind-key -n PageDown copy-mode
+
 set -g status-bg colour90
 set -g status-fg colour183
 

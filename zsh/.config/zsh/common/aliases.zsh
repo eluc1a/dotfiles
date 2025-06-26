@@ -79,6 +79,7 @@ alias jtset='jt -t monokai -cellw 88% -altmd -T -N -kl -fs 120 -tfs 130 -tf merr
 alias jsr-dry='jsr publish --dry-run'
 alias mcp-server="nohup sh -c 'PORT=2190 npx @typingmind/mcp CZ8s4B5cOED0E60-PueCh' > ~/mcp.log 2>&1 &"
 alias act='source .venv/bin/activate'
+alias claude-monitor='~/dev/Claude-Code-Usage-Monitor/color_ccusage_monitor.py --plan max20 --timezone "US/Eastern"'
 
 # NPM helpers
 alias ni='npm install'
