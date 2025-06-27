@@ -121,6 +121,8 @@ alias ggg='echo "Username: $(git config --global user.name)" && echo "Email: $(g
 alias ggl='echo "Username: $(git config user.name)" && echo "Email: $(git config user.email)"'
 alias gcloud-elucia='gcloud config set account elucia.khruschev@mail.waldenu.edu'
 alias gcloud-service='gcloud config set account azure-devops-pipeline@daas-ml-dev.iam.gserviceaccount.com'
+alias check-project='gcloud config get-value project'
+alias switch-project='gcloud config set project'
 
 # --- zsh configs -----------------------------------------------------
 alias alias-common='vim ~/.config/zsh/common/aliases.zsh'
