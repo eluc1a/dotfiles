@@ -4,7 +4,7 @@
 
 ######## ZSH & mac‑app helpers #######################################
 alias czz='open -a "Visual Studio Code.app" ~/.zshrc'
-alias code='open -a "Cursor.app"'
+alias code='open -a "Visual Studio Code.app"'
 
 ######## Clipboard helpers ###########################################
 alias pwdc='pwd | pbcopy'
@@ -46,3 +46,18 @@ alias disable-smoothing='defaults -currentHost write -g AppleFontSmoothing -int 
 alias enable-smoothing='defaults -currentHost delete -g AppleFontSmoothing'
 
 alias mac-env='vim /Users/ilyakhruschev/dotfiles/zsh/.config/zsh/mac/env.zsh'
+
+
+######## Ghostty #####################################################
+# Local Mac (eagle)
+alias term-eagle='open -na Ghostty --args --config=/Users/ilyakhruschev/dotfiles/ghostty/.config/ghostty/config-eagle.toml'
+
+# Debian (fox, 192.168.0.89)
+alias term-fox='open -na Ghostty --args \
+  --config=~/dotfiles/ghostty/.config/ghostty/config-fox.toml \
+  -e ssh elucia@192.168.0.89'
+
+# Raspberry Pi (viper, 192.168.0.88)
+alias term-viper='open -na Ghostty --args \
+  --config=~dotfiles/ghostty/.config/ghostty/config-viper.toml \
+  -e ssh elucia@192.168.0.88'

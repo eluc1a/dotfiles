@@ -94,3 +94,4 @@ export BAT_THEME="Coldark-Dark"
 unset LS_COLORS
 unset EZA_COLORS
 eval "$(direnv hook zsh)"
+

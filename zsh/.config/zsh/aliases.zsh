@@ -140,3 +140,6 @@ alias rr='rm ~/Downloads/*.torrent'
 
 alias mac-env='vim /Users/ilyakhruschev/dotfiles/zsh/.config/zsh/env.zsh'
 
+
+
+
