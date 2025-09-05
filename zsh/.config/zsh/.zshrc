@@ -95,3 +95,8 @@ unset LS_COLORS
 unset EZA_COLORS
 eval "$(direnv hook zsh)"
 
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/ilyakhruschev/.lmstudio/bin"
+# End of LM Studio CLI section
+

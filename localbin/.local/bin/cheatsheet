@@ -120,11 +120,11 @@ ${CYAN}ls -a${RESET}          - List hidden files
 ${CYAN}ls -h${RESET}          - Human-readable sizes
 
 # Symlinks
-${CYAN}ln -s <target> <linkname>${RESET} - Create symbolic link to target
-${CYAN}ln -sf <target> <linkname>${RESET} - Create/overwrite symbolic link
-${CYAN}readlink <link>${RESET}  - Display target the symlink points to
-${CYAN}readlink -f <link>${RESET} - Display canonical path of symlink target
-${CYAN}unlink <link>${RESET}    - Remove a symbolic link
+${CYAN}ln -s /path/to/original /path/to/link${RESET} - Create symbolic link
+${CYAN}ln -sf /path/to/original /path/to/link${RESET} - Create/overwrite symbolic link
+${CYAN}readlink /path/to/link${RESET}  - Display what the symlink points to
+${CYAN}readlink -f /path/to/link${RESET} - Display canonical path of symlink
+${CYAN}unlink /path/to/link${RESET}    - Remove a symbolic link
 ${CYAN}find . -type l${RESET}   - Find all symbolic links in current directory
 ${CYAN}find . -type l -ls${RESET} - Find and display all symbolic links with details
 
@@ -204,6 +204,13 @@ ${CYAN}git switch -c <new>${RESET}       - Create & switch to a new branch (newe
 ${CYAN}git merge <branch>${RESET}        - Merge specified branch into current
 ${CYAN}git log${RESET}                  - Show commit log (--oneline, --graph)
 ${CYAN}git diff${RESET}                 - Show changes
+${CYAN}git diff <branch> -- <file>${RESET} - Compare file with another branch
+${CYAN}git diff <commit> -- <file>${RESET} - Compare file with specific commit
+${CYAN}git stash${RESET}                - Temporarily store uncommitted changes
+${CYAN}git stash pop${RESET}            - Apply and remove most recent stash
+${CYAN}git stash list${RESET}           - List all stashes
+${CYAN}git reset --hard HEAD${RESET}    - Discard ALL changes (DANGEROUS!)
+${CYAN}git cherry-pick <hash>${RESET}   - Apply specific commit to current branch
 ${CYAN}git remote -v${RESET}            - List remote repositories
 ${CYAN}git clone <url>${RESET}          - Clone a repository
 
