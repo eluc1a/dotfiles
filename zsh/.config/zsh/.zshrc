@@ -100,3 +100,4 @@ eval "$(direnv hook zsh)"
 export PATH="$PATH:/Users/ilyakhruschev/.lmstudio/bin"
 # End of LM Studio CLI section
 
+source "$HOME/.cargo/env"
