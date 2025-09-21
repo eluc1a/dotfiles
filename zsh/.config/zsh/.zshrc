@@ -101,3 +101,5 @@ export PATH="$PATH:/Users/ilyakhruschev/.lmstudio/bin"
 # End of LM Studio CLI section
 
 source "$HOME/.cargo/env"
+
+export PATH=$PATH:/Users/ilyakhruschev/.spicetify
