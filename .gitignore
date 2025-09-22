@@ -15,4 +15,7 @@ adopt_remaining.sh
 **/homepage/services.yaml
 **/homepage/settings.yaml
 *.png
+*.gif
+*.jpeg
+*.jpg
 __pycache__
