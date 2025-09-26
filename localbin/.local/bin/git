@@ -1,27 +1,21 @@
 #!/usr/bin/env bash
-# git wrapper – run gitleaks before "git add", unless --override
-#   • honours .gitignore
-#   • uses custom rules at ~/.config/gitleaks/.gitleaks.toml
-#   • skips commit history so the scan stays fast
+# git wrapper that runs gitleaks before "git add"
+# - respects .gitignore
+# - uses rules at ~/.config/gitleaks/.gitleaks.toml
+# - skips commit history for speed
 
-###############################################################################
-# 0. Stop recursion                                                                  #
-###############################################################################
+# stop if we’re already inside the wrapper (avoid recursion)
 if [[ -n "$GIT_WRAPPER_SENTINEL" ]]; then
   exec "$GIT_WRAPPER_SENTINEL" "$@"
 fi
 
-###############################################################################
-# 1. Remove *this* directory from PATH, then locate the real git                #
-###############################################################################
+# drop this wrapper’s dir from PATH and find the real git
 WRAPPER_DIR="$(cd "$(dirname "$0")" && pwd -P)"
 export PATH="$(printf '%s' "$PATH" | tr ':' '\n' | grep -v -F "$WRAPPER_DIR" | paste -sd ':' -)"
 REAL_GIT="$(command -v git)"
 export GIT_WRAPPER_SENTINEL="$REAL_GIT"
 
-###############################################################################
-# 2. Intercept only `git add`                                                   #
-###############################################################################
+# only hook into "git add"
 if [[ $1 == "add" ]]; then
   shift
   override=0; args=()
@@ -37,9 +31,7 @@ if [[ $1 == "add" ]]; then
   if (( override == 0 )); then
     GITLEAKS_CONFIG="${GITLEAKS_CONFIG:-$HOME/.config/gitleaks/.gitleaks.toml}"
 
-    # Build list of candidate files that would be added (tracked-modified or
-    # untracked) while respecting .gitignore via Git itself. Scan each file
-    # individually so ignored paths never reach gitleaks.
+    # list files that would be staged (tracked+modified or new), respecting .gitignore
     mapfile -d '' scan_files < <(
       git ls-files -z --cached --others --exclude-standard -- "${args[@]:-.}"
     )
@@ -52,8 +44,8 @@ if [[ $1 == "add" ]]; then
         --verbose
       status=$?
       if (( status != 0 )); then
-        echo "🚫  Gitleaks caught secrets in '$file'."
-        echo "    Fix them or rerun with '--override' if you *really* want to stage anyway."
+        echo "XXX gitleaks flagged secrets in '$file'. XXX"
+        echo "fix them or rerun with --override if you really want to stage it"
         exit $status
       fi
     done
