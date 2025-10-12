@@ -105,7 +105,6 @@ alias bubu-cask-all='brew update && brew upgrade --cask && brew cleanup && brew 
 
 # --- Development Tools ---
 alias vim='nvim'
-alias jupyter='~/miniconda3/bin/jupyter'
 alias jtset='jt -t monokai -cellw 88% -altmd -T -N -kl -fs 120 -tfs 130 -tf merriserif'
 alias jsr-dry='jsr publish --dry-run'
 alias ni='npm install'
@@ -114,7 +113,6 @@ alias nr='npm run'
 alias nrb='npm run build'
 alias nrf='npm run format'
 alias nt='npm test'
-alias pipg='~/miniconda3/bin/pip'
 alias rsync='/opt/homebrew/bin/rsync'
 # alias code='open -a "Visual Studio Code.app"'
 alias code='open -a "Cursor.app"'
@@ -124,7 +122,6 @@ alias untarbz2='tar -xvjf'
 alias untarxz='tar -xvf'
 
 # --- Custom Scripts & Task Automation ---
-alias 11='nohup ~/miniconda3/bin/python $HOME/bash.d/key_script_runner.py &'
 alias killwork='$HOME/bash.d/killwork.sh'
 alias startwork='~/bash.d/slackmail.sh'
 alias pcsv='$HOME/bash.d/pretty_csv.sh'

@@ -74,7 +74,6 @@ alias externalip='curl ipinfo.io/ip'
 
 # --- Development Tools ------------------------------------------------
 alias vim='nvim'
-alias jupyter='~/miniconda3/bin/jupyter'
 alias jtset='jt -t monokai -cellw 88% -altmd -T -N -kl -fs 120 -tfs 130 -tf merriserif'
 alias jsr-dry='jsr publish --dry-run'
 alias mcp-server="nohup sh -c 'PORT=2190 npx @typingmind/mcp CZ8s4B5cOED0E60-PueCh' > ~/mcp.log 2>&1 &"
@@ -89,8 +88,6 @@ alias nrb='npm run build'
 alias nrf='npm run format'
 alias nt='npm test'
 
-alias pipg='~/miniconda3/bin/pip'
-
 # --- Archive Management ----------------------------------------------
 alias untarbz2='tar -xvjf'
 alias untarxz='tar -xvf'
@@ -99,10 +96,9 @@ alias untarxz='tar -xvf'
 alias gFF='gcan! && gpf!'
 
 # --- Custom Scripts & Task Automation --------------------------------
-alias 11='nohup ~/miniconda3/bin/python /Users/ilyakhruschev/bash.d/key_script_runner.py &'
 alias killwork='/Users/ilyakhruschev/bash.d/killwork.sh'
 alias startwork='~/bash.d/slackmail.sh'
-alias pcsv='/Users/ilyakhruschev/bash.d/pretty_csv.sh'
+# alias pcsv='/Users/ilyakhruschev/bash.d/pretty_csv.sh'
 
 # --- Media & Downloads -----------------------------------------------
 alias ydla='yt-dlp -x --audio-format mp3 --audio-quality 0 --format bestaudio'

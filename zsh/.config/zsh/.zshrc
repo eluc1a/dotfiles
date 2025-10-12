@@ -12,6 +12,17 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# In ~/.zprofile (preferred) or ~/.zshrc — near the top
+# Restore macOS defaults for PATH and MANPATH
+if [ -x /usr/libexec/path_helper ]; then
+  eval "$(/usr/libexec/path_helper -s)"
+fi
+
+# Set a reliable pager
+export PAGER="less -R"
+export MANPAGER="less -R"
+
+# IMPORTANT: do NOT export MANPATH yourself elsewhere in your dotfiles
 
 # --- Oh-My-Zsh Configuration ---
 export ZSH="$HOME/.oh-my-zsh"

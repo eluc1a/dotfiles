@@ -1,11 +1,87 @@
 
-2025/03/22 (00:13:35) | ===> btop++ v.1.4.0
-2025/03/22 (00:13:35) | ERROR: Stall in Runner thread, restarting!
+2025/04/30 (21:19:52) | ===> btop++ v.1.4.0
+2025/04/30 (21:19:52) | ERROR: Stall in Runner thread, restarting!
 
-2025/03/27 (08:25:32) | ===> btop++ v.1.4.0
-2025/03/27 (08:25:32) | ERROR: Stall in Runner thread, restarting!
+2025/05/02 (21:13:50) | ===> btop++ v.1.4.0
+2025/05/02 (21:13:50) | ERROR: Stall in Runner thread, restarting!
+2025/05/04 (11:15:19) | ERROR: Stall in Runner thread, restarting!
 
-2025/04/19 (15:45:17) | ===> btop++ v.1.4.0
-2025/04/19 (15:45:17) | ERROR: Stall in Runner thread, restarting!
-2025/04/19 (15:45:23) | ERROR: Stall in Runner thread, restarting!
-2025/04/19 (15:45:29) | ERROR: Stall in Runner thread, restarting!
+2025/05/04 (19:00:46) | ===> btop++ v.1.4.0
+2025/05/04 (19:00:46) | WARNING: Failed to get disk/partition stats with statvfs() for: /Volumes/Five
+2025/05/04 (19:00:52) | ERROR: Stall in Runner thread, restarting!
+
+2025/05/07 (05:31:28) | ===> btop++ v.1.4.0
+2025/05/07 (05:31:28) | ERROR: failed getting network interfaces
+2025/05/09 (11:04:44) | ERROR: Stall in Runner thread, restarting!
+
+2025/05/11 (00:07:47) | ===> btop++ v.1.4.0
+2025/05/11 (00:07:47) | ERROR: Stall in Runner thread, restarting!
+2025/05/11 (00:08:05) | ERROR: Stall in Runner thread, restarting!
+
+2025/05/12 (11:33:11) | ===> btop++ v.1.4.0
+2025/05/12 (11:33:11) | ERROR: Stall in Runner thread, restarting!
+
+2025/06/15 (09:29:11) | ===> btop++ v.1.4.0
+2025/06/15 (09:29:11) | ERROR: Stall in Runner thread, restarting!
+2025/06/15 (09:31:33) | ERROR: Stall in Runner thread, restarting!
+2025/06/15 (09:31:57) | ERROR: Stall in Runner thread, restarting!
+2025/06/15 (09:32:03) | ERROR: Stall in Runner thread, restarting!
+2025/06/15 (09:32:09) | ERROR: Stall in Runner thread, restarting!
+
+2025/06/29 (12:15:01) | ===> btop++ v.1.4.0
+2025/06/29 (12:15:01) | ERROR: Stall in Runner thread, restarting!
+2025/06/29 (12:15:07) | ERROR: Stall in Runner thread, restarting!
+2025/06/29 (12:15:13) | ERROR: Stall in Runner thread, restarting!
+2025/06/29 (12:15:19) | ERROR: Stall in Runner thread, restarting!
+2025/06/29 (12:15:25) | ERROR: Stall in Runner thread, restarting!
+2025/06/29 (12:16:01) | ERROR: Stall in Runner thread, restarting!
+
+2025/07/06 (12:23:06) | ===> btop++ v.1.4.0
+2025/07/06 (12:23:06) | ERROR: Stall in Runner thread, restarting!
+
+2025/07/31 (11:15:01) | ===> btop++ v.1.4.0
+2025/07/31 (11:15:01) | ERROR: failed getting network interfaces
+2025/07/31 (18:39:15) | ERROR: failed getting network interfaces
+2025/07/31 (19:57:58) | ERROR: failed getting network interfaces
+2025/08/01 (10:33:29) | ERROR: failed getting network interfaces
+2025/08/01 (18:51:17) | ERROR: failed getting network interfaces
+2025/08/07 (10:25:41) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:25:47) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:25:53) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:25:59) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:26:05) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:26:11) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:26:17) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:26:23) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:26:29) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:26:35) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:26:41) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:26:47) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:26:53) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:26:59) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:27:05) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:27:11) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:27:17) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:27:23) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:27:29) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:27:35) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:27:41) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:27:47) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:27:53) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:27:59) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:28:05) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:28:11) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:28:17) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:28:23) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:28:29) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:28:35) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:28:41) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:28:47) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:28:53) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:28:59) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:29:05) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:29:11) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:29:17) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:29:23) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:29:29) | ERROR: Stall in Runner thread, restarting!
+2025/08/07 (10:56:05) | ERROR: Stall in Runner thread, restarting!

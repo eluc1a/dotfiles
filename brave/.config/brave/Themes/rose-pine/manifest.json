@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Rosé Pine Brave",
+  "version": "1.0.0",
+  "theme": {
+    "colors": {
+      "frame": [57, 53, 82], 
+      "frame_inactive": [57, 53, 82],
+      "toolbar": [66, 63, 99],
+      "toolbar_button_icon": [233, 154, 151],
+      "omnibox_background": [38, 35, 58],
+      "omnibox_text": [224, 222, 244],
+      "tab_text": [233, 154, 151],
+      "background_tab_text": [235, 188, 186],
+      "background_tab": [38, 35, 58],
+      "active_tab": [87, 82, 121],
+      "bookmark_text": [233, 154, 151],
+      "ntp_background": [25, 23, 36],
+      "ntp_text": [224, 222, 244],
+      "button_background": [235, 111, 146]
+    },
+    "images": {
+      "theme_ntp_background": "theme_ntp_background.png"
+    },
+    "properties": {
+      "ntp_background_alignment": "center",
+      "ntp_background_repeat": "no-repeat"
+    }
+  }
+}

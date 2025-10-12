@@ -1,0 +1,8 @@
+#!/bin/bash
+# ~/.config/borders/bordersrc
+# Any option you put here is appended each time the service starts.
+
+borders "$@" \
+  --active_color 0xff00feff \
+  --inactive_color 0xffff0000 \
+  --width 20.0
