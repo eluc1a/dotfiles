@@ -110,6 +110,7 @@ eval "$(direnv hook zsh)"
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/ilyakhruschev/.lmstudio/bin"
 # End of LM Studio CLI section
+export ANTHROPIC_MODEL="claude-sonnet-4-5-20250929"
 
 source "$HOME/.cargo/env"
 
