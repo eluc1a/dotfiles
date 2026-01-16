@@ -26,38 +26,14 @@ alias bubu-cask-all='brew update && brew upgrade --cask && brew cleanup && brew 
 
 ######## Development tools / paths ###################################
 alias rsync='/opt/homebrew/bin/rsync'
-alias gcp-mldev='gcloud config set account azure-devops-pipeline@daas-ml-dev.iam.gserviceaccount.com'
-alias gcp-ik='gcloud config set account ikhruschev@gmail.com'
-alias gcp-me='gcloud config set account me@elucia.com'
-alias gcp-elucia='gcloud config set account elucia.khruschev@mail.waldenu.edu'
 
 ######## Project‑directory shortcuts #################################
 alias 0='/Users/ilyakhruschev/Documents/Learn/Projects/flutter_projects/wheat'
 alias 00='/Users/ilyakhruschev/Documents/development'
 alias 1='/Users/ilyakhruschev/Documents/Learn'
 alias 2='/Users/ilyakhruschev/Documents/Jobs_2023'
-alias 9='/Users/ilyakhruschev/AdTalem/repos'
-alias 99='/Users/ilyakhruschev/AdTalem/github_repos'
-alias KK='cd /Applications/Native\ Instruments/Komplete\ Kontrol/Komplete\ Kontrol.app/Contents/'
-alias musicd='/Users/ilyakhruschev/Documents/_music/Dynaton'
-alias musicp='/Users/ilyakhruschev/Documents/_music/Elucia'
 
 alias disable-smoothing='defaults -currentHost write -g AppleFontSmoothing -int 0'
 alias enable-smoothing='defaults -currentHost delete -g AppleFontSmoothing'
 
 alias mac-env='vim /Users/ilyakhruschev/dotfiles/zsh/.config/zsh/mac/env.zsh'
-
-
-######## Ghostty #####################################################
-# Local Mac (eagle)
-alias term-eagle='open -na Ghostty --args --config=/Users/ilyakhruschev/dotfiles/ghostty/.config/ghostty/config-eagle.toml'
-
-# Debian (fox, 192.168.0.89)
-alias term-fox='open -na Ghostty --args \
-  --config=~/dotfiles/ghostty/.config/ghostty/config-fox.toml \
-  -e ssh elucia@192.168.0.89'
-
-# Raspberry Pi (viper, 192.168.0.88)
-alias term-viper='open -na Ghostty --args \
-  --config=~dotfiles/ghostty/.config/ghostty/config-viper.toml \
-  -e ssh elucia@192.168.0.88'
