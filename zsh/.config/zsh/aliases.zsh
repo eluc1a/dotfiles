@@ -20,17 +20,10 @@ alias 7='cd -7'
 alias 8='cd -8'
 
 # --- Project Directory Shortcuts ---
-alias 0='$HOME/Documents/Learn/Projects/flutter_projects/wheat'
 alias 00='$HOME/Documents/development'
 # alias 1='$HOME/Documents/backups/Documents/_j'
 alias 1='$HOME/Documents/Learn'
-alias 2='$HOME/Documents/Jobs_2023'
 alias 4='cd ~/.config'
-alias 9='$HOME/AdTalem/repos'
-alias 99='$HOME/AdTalem/github_repos'
-alias KK='cd /Applications/Native\ Instruments/Komplete\ Kontrol/Komplete\ Kontrol.app/Contents/'
-alias musicd='$HOME/Documents/_music/Dynaton'
-alias musicp='$HOME/Documents/_music/Elucia'
 alias ghw='source ~/.config/github/github-work.sh'
 alias ghp='source ~/.config/github/github-personal.sh'
 # Add this to your .bashrc or .bash_aliases
@@ -122,20 +115,12 @@ alias untarbz2='tar -xvjf'
 alias untarxz='tar -xvf'
 
 # --- Custom Scripts & Task Automation ---
-alias killwork='$HOME/bash.d/killwork.sh'
-alias startwork='~/bash.d/slackmail.sh'
 alias pcsv='$HOME/bash.d/pretty_csv.sh'
 
 # --- Media & Downloads ---
 alias ydla='yt-dlp -x --audio-format mp3 --audio-quality 0 --format bestaudio'
-alias ydr='rsync -vra --stats --ignore-existing '\''$HOME/Music/Youtube_Downloads'\'' pi@192.168.0.9:'\''/home/pi/Music/Youtube_Downloads'\'''
 
-# --- Remote File Operations ---
-alias re='scp ~/Downloads/*.torrent $PI42 && rm ~/Downloads/*.torrent'
-alias ri='scp ~/Downloads/FITINDEX-Elucia.csv pi@192.168.0.9:/home/pi/food/fitindex/ && rm ~/Downloads/FITINDEX-Elucia.csv'
-alias rr='rm ~/Downloads/*.torrent'
-
-alias mac-env='vim /Users/ilyakhruschev/dotfiles/zsh/.config/zsh/env.zsh'
+alias mac-env='vim $HOME/dotfiles/zsh/.config/zsh/env.zsh'
 
 
 
