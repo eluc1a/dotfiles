@@ -56,11 +56,11 @@ font-size = 14
 # monospace
 # https://usgraphics.com/products/berkeley-mono
 # font-family = "Berkeley Mono Variable"
-font-family = "JetBrains Mono"
-font-variation = wght=100
+font-family = "Inconsolata Nerd Font Mono"
+font-variation = wght=300
 font-variation = wdth=100
 # font-family-bold = "Berkeley Mono Variable"
-font-family-bold = "JetBrains Mono"
+font-family-bold = "Inconsolata Nerd Font Mono"
 font-variation-bold = wght=800
 
 font-feature = calt
@@ -95,10 +95,23 @@ window-padding-y = 10
 
 # Background opacity for a more modern look
 background-opacity = 0.95
-background-blur-radius = 40
+background-blur-radius = 20
 
 # ghostty +list-themes
-theme = nightfox
+# theme = nightfox
+theme = Rose Pine Moon  
+
+# Custom colors
+background = #181729
+foreground = #ebbcba
+cursor-color = #eb6f92
+cursor-style = block
+cursor-style-blink = true
+# cursor-text = #1e1e2e
+# selection-background = #232136
+# selection-foreground = #cdd6f4
+
+
 
 mouse-hide-while-typing = true
 
@@ -116,4 +129,9 @@ keybind = shift+ctrl+.=move_tab:+1
 # custom-shader = /Users/fredrik/code/public/ghostty-shaders/in-game-crt.glsl
 # custom-shader-animation = false
 
-split-divider-color = #a800b7
+scrollback-limit = 50000
+
+# Splits
+unfocused-split-opacity = 0.65
+split-divider-color = #3e4451
+
