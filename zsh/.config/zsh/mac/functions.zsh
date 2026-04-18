@@ -7,7 +7,7 @@
 ssh() {
     case "$*" in
         *fox*)            printf '\033]11;#3d1c00\007' ;;
-        *raven*|*pheonix*|*192.168.0.88*) printf '\033]11;#2a0050\007' ;;
+        *raven*|*pheonix*|*192.168.0.88*) printf '\033]11;#21122a\007' ;;
     esac
     command ssh "$@"
     printf '\033]111\007'
