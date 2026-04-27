@@ -126,6 +126,3 @@ bloom() {
     open -a Bloom "$@"
   fi
 }
-
-# Alias "open" to your function
-alias open=bloom

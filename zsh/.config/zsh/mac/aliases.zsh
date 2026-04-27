@@ -37,3 +37,4 @@ alias disable-smoothing='defaults -currentHost write -g AppleFontSmoothing -int 
 alias enable-smoothing='defaults -currentHost delete -g AppleFontSmoothing'
 
 alias mac-env='vim /Users/ilyakhruschev/dotfiles/zsh/.config/zsh/mac/env.zsh'
+alias copy-plugs='rtk ls . | pbcopy'
