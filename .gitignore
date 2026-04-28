@@ -20,4 +20,7 @@ adopt_remaining.sh
 *.jpg
 *.pak
 *.bk
+localbin/.local/pipx/
+localbin/.local/share/
+localbin/.local/state/
 __pycache__
