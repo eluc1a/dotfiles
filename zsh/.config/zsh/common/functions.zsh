@@ -119,10 +119,13 @@ setborder () {
 }
 
 # Use Bloom instead of Finder
-bloom() {
-  if [ -z "$1" ]; then
-    open -a Bloom .
-  else
-    open -a Bloom "$@"
-  fi
-}
+# bloom() {
+#  if [ -z "$1" ]; then
+#    open -a Bloom .
+#  else
+#    open -a Bloom "$@"
+#  fi
+# }
+
+# Alias "open" to your function
+# alias open=bloom

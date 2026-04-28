@@ -15,9 +15,10 @@ RESET=$(tput sgr0)
 
 # --- Function to display defined colors and their hex codes ---
 colors() {
-  echo -e "${BLUE}██████${RESET} AT Blue    — #012169"
-  echo -e "${GREEN}██████${RESET} AT Green   — #78be20"
-  echo -e "${WHITE}██████${RESET} AT Grey    — #595959"
+  echo -e "${BLUE}██████${RESET} phData Blue    — #F1F1F1"
+  echo -e "${GREEN}██████${RESET} phData L.Blue   — #7BA7BD"
+  echo -e "${WHITE}██████${RESET} phData Green    — #1BBC9C"
+  echo -e "${BLUE}██████${RESET} Snowflake Blue — #2DB5E9"
   echo -e "${CYAN}██████${RESET} Aqua       — #00FFFF"
   echo -e "${MAGENTA}██████${RESET} Pink       — #FFC0CB"
   echo -e "${MAGENTA}██████${RESET} Purple     — #800080"

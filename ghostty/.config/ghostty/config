@@ -57,6 +57,9 @@ font-size = 14
 # https://usgraphics.com/products/berkeley-mono
 # font-family = "Berkeley Mono Variable"
 font-family = "Inconsolata Nerd Font Mono"
+font-size = 15
+font-thicken = true
+font-feature = calt, liga
 font-variation = wght=300
 font-variation = wdth=100
 # font-family-bold = "Berkeley Mono Variable"
@@ -90,8 +93,32 @@ macos-titlebar-style = tabs
 macos-non-native-fullscreen = false
 
 # Window padding
-window-padding-x = 10
-window-padding-y = 10
+window-padding-x = 12
+window-padding-y = 12
+
+split-divider-color = #e85f86
+working-directory = ~/
+unfocused-split-opacity = 0.7
+unfocused-split-fill = #58452d
+
+# Shell integration
+shell-integration = detect
+
+# Scrollback
+scrollback-limit = 50000
+
+# Cursor
+cursor-style = bar
+cursor-style-blink = true
+
+# Mouse
+mouse-hide-while-typing = true
+
+# Copy on select
+copy-on-select = clipboard
+
+# UX polish
+resize-overlay = never
 
 # Background opacity for a more modern look
 background-opacity = 0.95
@@ -99,37 +126,32 @@ background-blur-radius = 20
 
 # ghostty +list-themes
 # theme = nightfox
-theme = Rose Pine Moon  
+theme = rose-pine  
 
 # Custom colors
-background = #181729
+background = #272b33
 foreground = #ebbcba
 cursor-color = #eb6f92
 cursor-style = block
 cursor-style-blink = true
 # cursor-text = #1e1e2e
-# selection-background = #232136
+# selection-background = #2d2b3a
 # selection-foreground = #cdd6f4
-
-
-
-mouse-hide-while-typing = true
 
 window-inherit-working-directory = false
 working-directory = home
 
 # keymaps
 keybind = global:cmd+`=toggle_quick_terminal
-keybind = shift+ctrl+left_bracket=previous_tab
-keybind = shift+ctrl+right_bracket=next_tab
 keybind = shift+ctrl+,=move_tab:-1
 keybind = shift+ctrl+.=move_tab:+1
+keybind = ctrl+shift+alt+super+u=previous_tab
+keybind = ctrl+shift+alt+super+o=next_tab
 
 # shader
 # custom-shader = /Users/fredrik/code/public/ghostty-shaders/in-game-crt.glsl
 # custom-shader-animation = false
 
-scrollback-limit = 50000
 
 # Splits
 unfocused-split-opacity = 0.65

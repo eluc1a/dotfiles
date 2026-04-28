@@ -1,0 +1,90 @@
+{
+  "automation": {
+    "enableClaudeCodeIntegration": true
+  },
+  "$schema": "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux-settings.schema.json",
+  "schemaVersion": 1,
+
+  "app": {
+    "appearance": "dark",
+    "minimalMode": true,               // hides title bar, cleaner look
+    "newWorkspacePlacement": "afterCurrent",
+    "reorderOnNotification": false,     // active agents bubble to top
+    "commandPaletteSearchesAllSurfaces": true, // Cmd+P searches everything
+    "keepWorkspaceOpenWhenClosingLastSurface": true,
+    "preferredEditor": "nvim",
+    "sendAnonymousTelemetry": false
+  },
+
+  "automation": {
+    "claudeCodeIntegration": true,     // blue rings + sidebar alerts
+    "socketControlMode": "automation"  // lets CLI tools control cmux
+  },
+
+  "notifications": {
+    "sound": "Funk",                   // audible alert when agent needs you
+    "unreadPaneRing": true,
+    "paneFlash": true,
+    "dockBadge": true,
+    "showInMenuBar": true
+  },
+
+  "sidebar": {
+    "branchLayout": "inline",          // less vertical noise
+    "showNotificationMessage": true,
+    "showBranchDirectory": true,
+    "showPullRequests": true,
+    "showPorts": true,
+    "showProgress": true,
+    "showSSH": true,
+    "showLog": false,                  // log snippets are noisy, toggle as needed
+    "showCustomMetadata": true,
+    "openPortLinksInCmuxBrowser": true,
+    "openPullRequestLinksInCmuxBrowser": true
+  },
+
+  "sidebarAppearance": {
+    "matchTerminalBackground": false,
+    "tintColor": "#181b20",
+    "tintOpacity": 1
+  },
+
+  "workspaceColors": {
+    "indicatorStyle": "washRail",
+    "colors": {
+      "Rose": "#eb6f92",
+      "Pine": "#31748f",
+      "Foam": "#9ccfd8",
+      "Gold": "#f6c177",
+      "Iris": "#c4a7e7",
+      "Love": "#c94f6d",
+      "Moss": "#56949f",
+      "Lavender": "#9ca0e4",
+      "Peach": "#f3b8a2",
+      "Slate": "#908caa",
+      "Fox": "#7d4300"
+    },
+    "selectionColor": "#000000"
+  },
+
+  "browser": {
+    "openTerminalLinksInCmuxBrowser": true,
+    "hostsToOpenInEmbeddedBrowser": ["localhost", "127.0.0.1"]
+  },
+
+  "shortcuts": {
+    "bindings": {
+      "toggleSidebar": "cmd+b",
+     // "newSurface": ["ctrl+cmd+b", "c"],
+      "splitRight": ["ctrl+cmd+b", "%"],
+      "splitDown": ["ctrl+cmd+b", "\""],
+      "nextSurface": ["ctrl+cmd+b", "n"],
+      "prevSurface": ["ctrl+cmd+b", "p"],
+      "showNotifications": "cmd+i"
+    }
+  },
+
+  "customCommands": {
+    "trustedDirectories": ["~/"]       // skip confirmation for your home dir
+  }
+}

@@ -6,7 +6,7 @@
 # "command ssh" bypasses this wrapper to avoid infinite recursion with ghostty's ssh-env.
 ssh() {
     case "$*" in
-        *fox*)            printf '\033]11;#3d1c00\007' ;;
+        *fox*)            printf '\033]11;#4a2300\007' ;;
         *raven*|*pheonix*|*192.168.0.88*) printf '\033]11;#21122a\007' ;;
     esac
     command ssh "$@"

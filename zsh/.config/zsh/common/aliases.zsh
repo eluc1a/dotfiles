@@ -2,6 +2,9 @@
 # --------------------------------
 # Cross‑platform (macOS, Linux, WSL, …) aliases
 
+# --- phData Projects --------------------
+alias p1='~/dev/first-premier-bank/'
+
 # --- ZSH Configuration ------------------------------------------------
 alias cz='vim ~/.zshrc'
 alias sz='source ~/.zshrc'
@@ -76,7 +79,9 @@ alias externalip='curl ipinfo.io/ip'
 alias vim='nvim'
 alias jtset='jt -t monokai -cellw 88% -altmd -T -N -kl -fs 120 -tfs 130 -tf merriserif'
 alias jsr-dry='jsr publish --dry-run'
+alias mcp-server="nohup sh -c 'PORT=2190 npx @typingmind/mcp CZ8s4B5cOED0E60-PueCh' > ~/mcp.log 2>&1 &"
 alias act='source .venv/bin/activate'
+alias claude-monitor='~/dev/Claude-Code-Usage-Monitor/color_ccusage_monitor.py --plan max20 --timezone "US/Eastern"'
 
 # NPM helpers
 alias ni='npm install'
@@ -94,13 +99,18 @@ alias untarxz='tar -xvf'
 alias gFF='gcan! && gpf!'
 
 # --- Custom Scripts & Task Automation --------------------------------
-alias killwork='/Users/ilyakhruschev/bash.d/killwork.sh'
+alias killwork='/Users/ikhruschev/bash.d/killwork.sh'
 alias startwork='~/bash.d/slackmail.sh'
-# alias pcsv='/Users/ilyakhruschev/bash.d/pretty_csv.sh'
+# alias pcsv='/Users/ikhruschev/bash.d/pretty_csv.sh'
 
 # --- Media & Downloads -----------------------------------------------
 alias ydla='yt-dlp -x --audio-format mp3 --audio-quality 0 --format bestaudio'
-alias ydr='rsync -vra --stats --ignore-existing '\''/Users/ilyakhruschev/Music/Youtube_Downloads'\'' pi@192.168.0.9:'\''/home/pi/Music/Youtube_Downloads'\'''
+alias ydr='rsync -vra --stats --ignore-existing '\''/Users/ikhruschev/Music/Youtube_Downloads'\'' pi@192.168.0.9:'\''/home/pi/Music/Youtube_Downloads'\'''
+
+# --- Remote File Operations ------------------------------------------
+alias re='scp ~/Downloads/*.torrent $PI42 && rm ~/Downloads/*.torrent'
+alias ri='scp ~/Downloads/FITINDEX-Elucia.csv pi@192.168.0.9:/home/pi/food/fitindex/ && rm ~/Downloads/FITINDEX-Elucia.csv'
+alias rr='rm ~/Downloads/*.torrent'
 
 
 # --- Git identity helpers --------------------------------------------
@@ -108,6 +118,8 @@ alias ghw='source ~/.config/github/github-work.sh'
 alias ghp='source ~/.config/github/github-personal.sh'
 alias ggg='echo "Username: $(git config --global user.name)" && echo "Email: $(git config --global user.email)"'
 alias ggl='echo "Username: $(git config user.name)" && echo "Email: $(git config user.email)"'
+alias gcloud-elucia='gcloud config set account elucia.khruschev@mail.waldenu.edu'
+alias gcloud-service='gcloud config set account azure-devops-pipeline@daas-ml-dev.iam.gserviceaccount.com'
 alias check-project='gcloud config get-value project'
 alias switch-project='gcloud config set project'
 
@@ -123,3 +135,6 @@ elif [[ "$(uname)" == "Linux" ]]; then
     alias alias-system='vim ~/.config/zsh/linux/aliases.zsh'
     alias env-system='vim ~/.config/zsh/linux/env.zsh'
 fi
+
+# --- anything --------------------------------------------------------
+alias sfaccount='echo "jsc43514.us-east-1"'
